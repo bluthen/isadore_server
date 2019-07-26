@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>Isadore Alarms: Email Confirmation</title>
+    <script src="jquery-1.8.3.min.js"></script>
+    <script>
+        // getQueryParams Source http://stackoverflow.com/questions/439463/how-to-get-get-and-post-variables-with-jquery
+        // Ates Goral
+        function getQueryParams(qs) {
+            qs = qs.split("+").join(" ");
+            var params = {},
+                tokens,
+                re = /[?&]?([^=]+)=([^&]*)/g;
+
+            while (tokens = re.exec(qs)) {
+                params[decodeURIComponent(tokens[1])]
+                    = decodeURIComponent(tokens[2]);
+            }
+
+            return params;
+        }
+
+        function confirmEmail(email, code) {
+            var a = "/alarm_contact_info_phone/"+email+"/confirm";
+            $.ajax();
+        }
+
+        $(document).ready(function() {
+            var confirm_code = getQueryParams("confirm_code");
+            var email = getQueryParams("email");
+
+            if(confirm_code && email) {
+                //Send server request
+                confirmEmail(email, confirm_code);
+            } else {
+                //Show email, confirm_code form
+                $('#confirm_form').show();
+            }
+        });
+    </script>
+</head>
+<body>
+<img src="logo_loginPage.png" alt="Isadore Logo"/>
+<img id="spinner" src="ajax-loader-bigimg.gif" alt="Loading spinner..."/>
+<div id="message"></div>
+<div id="confirm_form" style="display:none">
+    <input type="text" id="email"/>
+    <input type="text" id="confirm_code"/>
+    <button type="button" id="confirm_button">Confirm</button>
+</div>
+</body>
+</html>

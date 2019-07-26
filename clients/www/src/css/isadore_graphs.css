@@ -1,0 +1,109 @@
+#chartdiv .dygraph-label {
+	/* This applies to the title, x-axis label and y-axis label */
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#chartdiv .dygraph-ylabel {
+	/* This rule only applies to the y-axis label */
+	font-size: 16px;
+	text-shadow: gray -2px 2px 2px;  /* (offsets are in a rotated frame) */
+}
+#chartdiv .dygraph-y2label {
+	/* This rule only applies to the y-axis label */
+	font-size: 16px;
+	text-shadow: gray -2px 2px 2px;  /* (offsets are in a rotated frame) */
+}
+
+.idcg_wrapper {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.icg_wrapper {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.icg_slider_wrapper {
+	display: inline-block;
+	position: absolute;
+}
+
+.icg_slider {
+	display: inline-block;
+	height: 100%;
+	padding: 0px 0px 0px 0px;
+}
+
+.icg_graph {
+	display: inline-block;
+	position: absolute;
+}
+
+.idcg_graph {
+	position: relative;
+}
+
+.idcg_graph_top {
+}
+
+.idcg_graph_bottom {
+}
+
+.idcg_graph_range_selector {
+}
+
+.idcg_icons {
+	position: absolute;
+}
+
+.ig_wrapper {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.ig_wrapper .ig_sensor_selector .ui-state-default {
+	background: white;
+	color: black;
+	font-weight: normal;
+}
+
+.ig_wrapper img[src="imgs/icon_calendar.gif"] {
+	position: relative;
+	padding-left: 4px;
+	top: 7px;
+	cursor: pointer;
+}
+
+.ig_header_control_wrapper div {
+	padding-top: 1ex;
+	padding-bottom: 1ex;
+}
+
+.ig_header_control_wrapper h3 {
+	text-align: center;
+	display: block;
+	color: black;
+	border: none;
+	font-size: 14px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+.ig_footer_wrapper {
+	text-align: center;
+	padding-bottom: 7px;
+	padding-top: 7px;
+}
+
+.ig_footer_time_wrapper div {
+	padding-left: 7px;
+	padding-right: 7px;
+}
+
+.ig_color_field {
+	width: 6em;
+}

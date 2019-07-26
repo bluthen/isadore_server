@@ -1,0 +1,30 @@
+<project name="isadore_www" default="help" basedir=".">
+
+	<target name="isadoretest" depends="">
+		<property name="site" value="isadoretest"/>
+		<antcall target="deploy" inheritAll="true"/>
+	</target>
+
+	<target name="deploy" if="site">
+		<copy todir="/www/${site}.exotericanalytics.com/webapps/isadore">
+			<fileset dir="./src" excludes="**/*.cfg" />
+		</copy>
+		<mkdir dir="/www/${site}.exotericanalytics.com/webapps/isadore/s/doc"/>
+		<copy todir="/www/${site}.exotericanalytics.com/webapps/isadore/s/doc">
+			<fileset dir="./doc" />
+		</copy>
+		<replace file="/www/${site}.exotericanalytics.com/webapps/isadore/s/doc/restapi/isadore.raml" token="@@@baseUri@@@" value="https://${site}.exotericanalytics.com/isadore"/>
+		<mkdir dir="/www/${site}.exotericanalytics.com/webapps/isadore/sessions"/>
+		<mkdir dir="/www/${site}.exotericanalytics.com/webapps/isadore/gen_data"/>
+	</target>
+
+	<target name="help">
+		<echo message="Usage: ant [target]"/>
+		<echo message=""/>
+		<echo message="Targets:"/>
+		<echo message="   isadoretest                Deploys to isadoretest."/>
+		<echo message="   deploy -Dsite=sitename     Deploys to sitename."/>
+		<echo message=""/>
+	</target>
+
+</project>

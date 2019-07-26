@@ -1,0 +1,207 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	background-color: #FFFFFF;
+	font-size: 14px;
+	line-height: 22px;
+}
+
+@media screen {
+	body {
+		position: relative; height : 100%;
+		max-height: 100%;
+		padding: 0;
+		margin: 0;
+		height: 100%;
+	}
+	.navigation {
+		position: relative;
+		width: 100%;
+		height: 50px;
+		background-color: #C3C3C3;
+	}
+	.navigation_wrapper {
+		padding: 5px;
+	}
+	.navigation button {
+		position: absolute;
+		right: 7px;
+		top: 7px;
+	}
+	div.pages {
+		top: 50px;
+		overflow: auto;
+	}
+	div.pages div.page {
+		padding-bottom: 400px;
+	}
+}
+
+@media print {
+	.page {
+		page-break-after: always;
+	}
+	.navigation_wrapper {
+		display: none;
+	}
+	body {
+		font-size: 13px;
+		line-height: 20px;
+	}
+}
+
+.side_value_extra {
+	padding-left: 1em;
+}
+
+.section {
+	padding-top: 17px;
+	padding-bottom: 8px;
+}
+.clears {
+	clear: both;
+}
+
+.wclears {
+	width: 1px;
+	height: 1px;
+	font-size: 0px;
+	line-height: 0px;
+	clear: both;
+}
+
+.centered {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.side_block_label {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	vertical-align: top;
+}
+
+span.side_block_label {
+	text-align: right;
+	display: inline-block;
+	width: 50%;
+	font-weight: bold;
+	vertical-align: top;
+}
+
+.side_block_value {
+	display: inline-block;
+	font-weight: normal;
+	text-align: left;
+	width: 50%;
+	vertical-align: top;
+}
+
+
+.label_column {
+	float: left;
+	width: 50%;
+	font-weight: bold;
+	text-align: right;
+}
+
+.side_label {
+	padding-right: 5px;
+}
+
+.value_column {
+	float: left;
+	width: 50%;
+	text-align: left;
+}
+
+.side_value {
+	min-height: 1ex;
+}
+
+.top_section {
+	clear-after: both;
+	text-align: center;
+}
+
+.air_section {
+	border-top: 1px solid black;
+}
+
+.mc_section {
+	border-top: 1px solid black;
+}
+
+.shelled_section {
+	border-top: 1px solid black;
+}
+
+div.section_title {
+	
+}
+
+div.fill_img {
+	text-align: center;
+}
+
+div.fill_img img {
+	margin-top: 20px;
+}
+
+div.section_title span {
+	text-align: center;
+	border-bottom: 1px solid black;
+	padding-left: 1em;
+	padding-right: 1em;
+	font-weight: bold;
+}
+
+.report_title {
+	font-weight: bold;
+	font-size: 19px;
+	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 5px;
+}
+
+.year_label {
+	font-weight: bold;
+}
+
+.year_column {
+	float: left;
+	width: 33.3%;
+}
+
+.fill_column {
+	float: left;
+	width: 33.3%;
+}
+
+.hybrid_column {
+	float: left;
+	width: 33.3%;
+}
+
+.time_column {
+	float: left;
+	width: 50%;
+}
+
+.air_column {
+	float: left;
+	width: 50%;
+}
+
+.shelled_mc_column {
+	float: left;
+	width: 50%;
+}
+
+.shelled_other_column {
+	float: left;
+	width: 50%;
+}

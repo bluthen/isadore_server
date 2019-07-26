@@ -1,0 +1,16 @@
+html {
+	background: white;
+}
+
+div#navigation {
+	display: none;
+}
+
+div#main {
+	-webkit-border-radius: none;
+	-moz-border-radius: none;
+	border-radius: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}

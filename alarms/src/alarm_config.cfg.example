@@ -1,0 +1,14 @@
+[alarm_watcher]
+customers=empty
+[alarms_db]
+dbuser = alarms
+dbname = alarms
+dbpass = alarms_password
+dbhost = alarams_hostname
+[customer]
+base_url=customer_base_url
+alarm_auth_password=authpassword
+[twilio]
+account=account_code
+token=token_code
+number=twilio_number

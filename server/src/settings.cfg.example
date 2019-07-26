@@ -1,0 +1,10 @@
+[MID]
+midpass = change_to_midpass_in_db
+[database]
+dbuser = change_to_db_user 
+dbname = change_to_db_name
+dbpass = change_to_db_pass
+dbhost = change_to_db_host
+[twilio]
+account=account_code
+token=token_code
