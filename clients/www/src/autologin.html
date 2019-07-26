@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" type="text/css" href="css/isadore.css"
+	media="screen" />
+<script type="text/javascript" src="js/third.js"></script>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+<script>
+$(document).ready(function() {
+	if ($.browser.msie) {
+		alert('Isadore has yet to be tested with Internet Explorer. You will probably have a better experience with Google Chrome, Firefox, Opera, or Safari. Sorry for any inconvience.');
+	} else {
+		$('#email').val('demo1@exotericanalytics.com');
+		$('#password').val('demo1');
+		$('#remember').prop('checked', true);
+		login();
+	}
+});
+</script>
+<title>Isadore Login</title>
+</head>
+<body>
+	<a href="./login.html"><img id="login_logo" src="imgs/logo_loginPage.png" /></a>
+	<div id="login_box" class="box">
+		<div id="login_step" style="display: none;">
+			<div class="header">Please Login</div>
+			<div id="loginwrapper" class="body">
+				<div class="success" id="good"></div>
+				<div class="errors" id="login401">
+					Invalid email or password. You can try again, or if you forgot your
+					password, click <a href="#fs1">here</a>.
+				</div>
+				<div class="errors" id="loginOther"></div>
+				<div class="text_label">
+					<label for="email">Email Address</label>
+				</div>
+				<div>
+					<input id="email" type="email" />
+				</div>
+				<div class="text_label">
+					<label for="password">Password</label>
+				</div>
+				<div>
+					<input id="password" type="password" />
+				</div>
+				<div>
+					<input id="remember" type="checkbox" value="true" /> <label
+						for="remember">Remember me?</label>
+				</div>
+				<div class="login_button">
+					<img class="spinner" src="imgs/ajax-loader.gif"
+						alt="Loading Spinner" />
+					<button id="login" type="button" value="Login">Login</button>
+					<a class="forgot" href="#fs1">Forgot your password?</a>
+				</div>
+			</div>
+		</div>
+		<div id="forgot_step1" style="display: none;">
+			<div class="header">Password Recovery: Step 1 of 2</div>
+			<div class="body">
+				<div class="login_instructions">
+				Please enter and confirm your email address. An email will be sent to
+				you that will be required for the recovery process.
+				</div>
+				<div class="errors" id="forgot_step1_error"></div>
+				<div class="text_label">
+					<label for="forgot_step1_email">Email Address</label>
+				</div>
+				<div>
+					<input id="forgot_step1_email" type="email" />
+				</div>
+				<div class="login_button">
+					<img class="spinner" src="imgs/ajax-loader.gif"
+						alt="Loading Spinner" />
+					<button id="forgot_step1_continue" type="button"
+						value="forgot_step2">Continue to Step 2</button>
+					<a class="forgot" href="#l">Back to Login Screen</a>
+				</div>
+			</div>
+		</div>
+		<div id="forgot_step2" style="display: none;">
+			<div class="header">Password Recovery: Step 2 of 2</div>
+			<div class="body">
+				<div class="login_instructions">
+				An email has been sent. Check your email for a recovery code and
+				enter it below and set your new password.
+				</div>
+				<div class="errors" id="forgot_step2_error"></div>
+				<div class="text_label">
+					<label for="forgot_step2_code">Recovery Code</label>
+				</div>
+				<div>
+					<input id="forgot_step2_code" type="text" />
+				</div>
+				<div class="text_label">
+					<label for="forgot_step2_password">New Password</label>
+				</div>
+				<div>
+					<input id="forgot_step2_password" type="password" />
+				</div>
+				<div class="text_label">
+					<label for="forgot_step2_password_retype">Re-type New
+						Password</label>
+				</div>
+				<div>
+					<input id="forgot_step2_password_retype" type="password" />
+				</div>
+				<div class="login_button">
+					<img class="spinner" src="imgs/ajax-loader.gif"
+						alt="Loading Spinner" />
+					<button id="forgot_step2_continue" type="button"
+						value="forgot_step2">Change Password</button>
+					<a class="forgot" href="#l">Back to Login Screen</a>
+				</div>
+			</div>
+		</div>
+		<div id="spinner_step" style="text-align: center;">
+					<img src="imgs/ajax-loader.gif"
+						alt="Loading Spinner" />
+		</div>
+	</div>
+</body>
+</html>

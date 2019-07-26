@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link rel="stylesheet" type="text/css"
+	href="../css/custom-theme/jquery-ui-1.9.2.custom.min.css" media="screen" />
+<link rel="stylesheet" type="text/css"
+	href="../css/jpicker-1.1.6.css" media="screen" />
+<link rel="stylesheet" type="text/css"
+	href="../css/isadore_graphs.css" media="screen" />
+<link rel="stylesheet" type="text/css"
+	href="../css/isadore.css" media="screen" />
+<link rel="stylesheet" type="text/css"
+	href="../css/dygraph.css" media="screen" />
+<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="../js/excanvas.min.js"></script><![endif]-->
+<script type="text/javascript" src="../js/third.js"></script>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui-1.9.2.custom.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="../js/jpicker-1.1.6.min.js"></script>
+<script type="text/javascript" src="../js/dygraph.min.js"></script>
+<script type="text/javascript" src="../js/isadore_control_graphs.js"></script>
+<script type="text/javascript" src="../js/isadore_html.js"></script>
+<script type="text/javascript" src="./coffee-script.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<div id="resizewrap" style="height: 600px; width: 1000px;border: 1px solid black;" class="ui-widget-content">
+		<div id="chartdiv" style="height: 100%; width: 100%;"></div>
+	</div>
+	<script type="text/coffeescript">
+$(document).ready ->
+	data = [
+		[new Date("2011-06-09T18:46:21"),[3,5.5,6], [30.5,30.5,30.5], [.003,.003,.003]],
+		[new Date("2011-06-09T18:56:21"),[7,8.9,9], [50.2,50.2,50.2], [.004,.004,.004]],
+		[new Date("2011-06-09T18:58:21"),[12,12.34,13], [44,44.2,45], [.006,.007,.008]],
+		[new Date("2011-06-09T19:05:41"),[2,2.34,3], [12,12.8,13], [.009,.009,.009]],
+		[new Date("2011-06-09T19:55:41"),[1,2.34,3], [12,12.8,13], [.007,.009,.010]]
+	]
+
+	data2 = [
+		[new Date("2011-06-09T18:46:21"),[5.5,5.5,5.5],[30.5,30.5,30.5],[.003,.003,.003]],
+		[new Date("2011-06-09T18:56:21"),[8.9,8.9,8.9],[50.2,50.2,50.2],[.004,.004,.004]],
+		[new Date("2011-06-09T18:58:21"),[12.34,12.24,12.24],[44.2,44.2,44.2],[.007,.007,.007]],
+		[new Date("2011-06-09T18:59:21"),[2.34,2.34,2.34],[12.8,12.8,12.8],[.009,.009,.009]],
+	]
+
+	data3 = [
+		[new Date("2011-06-09T18:46:21"),[5.5,5.5,5.5]],
+		[new Date("2011-06-09T18:56:21"),[8.9,8.9,8.9]],
+		[new Date("2011-06-09T18:58:21"),[12.34,12.34,12.34]],
+		[new Date("2011-06-09T19:05:41"),[2.34,2.34,2.34]]
+		[new Date("2011-06-09T19:15:11"),[2.34,2.34,2.34]]
+	]
+
+	options={
+		axisColors:[['#FF0000', '#0010A5'], ['#FF6600', '#6300A5']]
+		axisLabels:[['Temperature (F)', 'Humidity (%)'], ['Wind Speed (MPH)', 'JFactor']]
+		seriesLabels:[['Top', 'Bottom', 'TopH'], ['Inline', 'Outlet', 'Inlet']]
+		dataAxisMap:[[0, 0, 1], [1, 1, 0]]
+	}
+
+	plot1 = new IsadoreDualControlGraph(
+		document.getElementById('chartdiv')
+		[data, data2, data3]
+		options
+	)
+
+
+	$('#resizewrap').resizable()
+	$('#resizewrap').bind 'resizestop', () ->
+		plot1.relayout()
+	</script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="../../../s/css/fill_tab.css"
+	media="screen" />
+<link rel="stylesheet" type="text/css" href="../../../s/css/fill_tab.css"
+	media="print" />
+<script type="text/javascript" src="../../../s/js/jquery-1.8.3.min.js"></script>
+<script>
+function resize(){
+	$('.pages').height($(window).height() - 50);
+}
+$(document).ready(function() {
+	resize();
+	$('#print').click(function () {window.print();});
+	$(window).resize(resize);
+});
+</script>
+</head>
+<body>
+	<div class="navigation">
+		<div class="navigation_wrapper">
+			<span>You may want to set printing page orientation to landscape.</span>
+			<button id="print" type="button" name="print" value="print">Print</button>
+		</div>
+	</div>
+	<div class="pages">
+		<div class="report_title">
+			{{report_title}}
+			<div class="report_date">Generated on {{timestamp}}</div>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<td>Hybrid</td>
+					<td>Fill #</td>
+					<td>Bin #</td>
+					<td style="white-space:nowrap;">Field</td>
+					<td>Harvest H2O</td>
+					<td>Sheller H2O</td>
+					<td>Pts H2O removed</td>
+					<td>Up air hrs</td>
+					<td>Down air hrs</td>
+					<td>Total air hrs</td>
+					<td>% up hrs</td>
+					<td>% down hrs</td>
+					<td>hrs/point</td>
+					<td>bushels</td>
+				</tr>
+			</thead>
+			<tbody>
+{% for group in groups %}
+    {% set idx = loop.index0 %}
+    {% for fill in group %}
+				<tr>
+					<td>{{fill["hybrid"]}}</td>
+					<td>{{fill["fill_number"]}}</td>
+					<td>{{fill["bin_number"]}}</td>
+					<td style="white-space:nowrap;">{{fill["field_name"]}}</td>
+					<td>{{fill["pre_avg"]}}</td>
+					<td>{{fill["post_avg"]}}</td>
+					<td>{{fill["mc_removed"]}}</td>
+					<td>{{fill["up_time"]}}</td>
+					<td>{{fill["down_time"]}}</td>
+					<td>{{fill["air_total"]}}</td>
+					<td>{{fill["up_percent"]}}</td>
+					<td>{{fill["down_percent"]}}</td>
+					<td>{{fill["hrs_per_point"]}}</td>
+					<td>{{fill["bushels"]}}</td>
+				</tr>
+    {% endfor %}
+				<tr class="gtotals">
+					<td class="bolded" colspan="4">Hybrid Averages</td>
+					<td>{{groupAvgs[idx]["pre_avg"]}}</td>
+					<td>{{groupAvgs[idx]["post_avg"]}}</td>
+					<td>{{groupAvgs[idx]["mc_removed"]}}</td>
+					<td>{{groupAvgs[idx]["up_time"]}}</td>
+					<td>{{groupAvgs[idx]["down_time"]}}</td>
+					<td>{{groupAvgs[idx]["air_total"]}}</td>
+					<td>{{groupAvgs[idx]["up_percent"]}}</td>
+					<td>{{groupAvgs[idx]["down_percent"]}}</td>
+					<td>{{groupAvgs[idx]["hrs_per_point"]}}</td>
+					<td>{{groupAvgs[idx]["bushels"]}}</td>
+				</tr>
+				<tr class="gtotals">
+					<td class="bolded" colspan="13">Hybrid Totals</td>
+					<td>{{groupTotals[idx]["bushels"]}}</td>
+				</tr>
+{% endfor %}
+				<tr class="gtotals">
+					<td class="bolded" colspan="4">Overall Averages</td>
+					<td>{{avgs["pre_avg"]}}</td>
+					<td>{{avgs["post_avg"]}}</td>
+					<td>{{avgs["mc_removed"]}}</td>
+					<td>{{avgs["up_time"]}}</td>
+					<td>{{avgs["down_time"]}}</td>
+					<td>{{avgs["air_total"]}}</td>
+					<td>{{avgs["up_percent"]}}</td>
+					<td>{{avgs["down_percent"]}}</td>
+					<td>{{avgs["hrs_per_point"]}}</td>
+					<td>{{avgs["bushels"]}}</td>
+				</tr>
+				<tr class="totals">
+					<td class="bolded" colspan="13">Overall Totals</td>
+					<td>{{totals["bushels"]}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

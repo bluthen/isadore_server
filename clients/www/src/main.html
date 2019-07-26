@@ -1,0 +1,1151 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+
+<link rel="stylesheet" type="text/css" href="css/isadore.css"
+	media="screen,print" />
+<link rel="stylesheet" type="text/css" href="css/datatables-1.9.3.css"
+	media="screen,print" />
+<link rel="stylesheet" type="text/css" href="css/colorbox.css"
+	media="screen,print" />
+<link rel="stylesheet" type="text/css" href="css/jquery-ui-timepicker-addon.css"
+	media="screen,print" />
+<link rel="stylesheet" type="text/css"
+	href="css/custom-theme/jquery-ui-1.9.2.custom.min.css" media="screen,print" />
+<link rel="stylesheet" type="text/css"
+	href="css/jpicker-1.1.6.css" media="screen" />
+<link rel="stylesheet" type="text/css"
+	href="css/isadore_graphs.css" media="screen,print" />
+<link rel="stylesheet" type="text/css" href="css/isadore_print.css"
+	media="print" />
+<link rel="stylesheet" type="text/css" href="js/jsoneditor-4.0/jsoneditor.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/dygraph.css"/>
+<script type="text/javascript" src="js/lodash.min.js"></script>
+<script type="text/javascript" src="js/math.min.js"></script>
+<script type="text/javascript" src="js/html2canvas-0.4.1/build/html2canvas.min.js"></script>
+<script type="text/javascript" src="js/dygraph.min.js"></script>
+<script type="text/javascript" src="js/async-0.9.2/lib/async.js"></script>
+<script type="text/javascript" src="js/node-uuid-1.4.3/uuid.js"></script>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/jquery.dataTables-1.9.3.min.js"></script>
+<script type="text/javascript" src="js/jquery.ba-bbq.min.js"></script>
+<script type="text/javascript" src="js/jquery.colorbox-min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.9.2.custom.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="js/jpicker-1.1.6.min.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/jquery.numeric.js"></script>
+<script type="text/javascript" src="js/third.js"></script>
+<script type="text/javascript" src="js/jstz-1.0.4.min.js"></script>
+<script type="text/javascript" src="js/TimeGraph.js"></script>
+<script type="text/javascript" src="js/SimpleGrapher.js"></script>
+<script type="text/javascript" src="js/GraphsTabCustom.js"></script>
+<script type="text/javascript" src="js/DataManager.js"></script>
+<script type="text/javascript" src="js/isadore_data.js"></script>
+<script type="text/javascript" src="js/isadore_html.js"></script>
+<script type="text/javascript" src="js/isadore_dialog.js"></script>
+<script type="text/javascript" src="js/isadore_graphs.js"></script>
+<script type="text/javascript" src="js/isadore_graph_tab.js"></script>
+<script type="text/javascript" src="js/isadore_bl_controltab.js"></script>
+<script type="text/javascript" src="js/isadore_current_bl_filltab.js"></script>
+<script type="text/javascript" src="js/isadore_current_data_setup_tab.js"></script>
+<script type="text/javascript" src="js/isadore_bl.js"></script>
+<script type="text/javascript" src="js/isadore_fillb_edit.js"></script>
+<script type="text/javascript" src="js/isadore_current_data_handler.js"></script>
+<script type="text/javascript" src="js/isadore_help.js"></script>
+<script type="text/javascript" src="js/isadore_deduct.js"></script>
+<script type="text/javascript" src="js/isadore_account.js"></script>
+<script type="text/javascript" src="js/isadore_alarm.js"></script>
+<script type="text/javascript" src="js/isadore_settings_lut_maxtemp.js"></script>
+<script type="text/javascript" src="js/isadore_settings_general_config_config.js"></script>
+<script type="text/javascript" src="js/isadore_settings.js"></script>
+<script type="text/javascript" src="js/isadore_historical.js"></script>
+<script type="text/javascript" src="js/YourAccountSettings.js"></script>
+<script type="text/javascript" src="js/ImageAnimator.js"></script>
+<script type="text/javascript" src="js/ImageHeatmap.js"></script>
+<script type="text/javascript" src="js/GaugeSensorStatus.js"></script>
+<script type="text/javascript" src="js/isadore.js"></script>
+<script type="text/javascript" src="js/jsoneditor-4.0/jsoneditor.min.js"></script>
+<title>Isadore</title>
+</head>
+<body>
+	<div id="main_center">
+		<img id="main_logo" src="imgs/logo_adminSystem.png" />
+        <div class="info_header">
+            <span class="dryer_name"></span><span class="timezone"></span>
+            <a href="#gaugestatus" class="gauge_status_open"><span class="gauge_overall_status_icon"></span>Gauge Status</a>
+            <a class="account" href="#account"></a></div>
+		<div id="main">
+			<!-- NAVIGATION -->
+            <div id="navigation">
+                <img class="shifter" alt="Hide Navigation" src="imgs/icon_navmin.png"/>
+				<div id="nav_title" class="title">Navigation:</div>
+				<div id="menu">
+					<a id="menu_current_data" class="unselected" href="#current_data">Current
+						Data</a> <a id="menu_historical_data" class="unselected"
+						href="#historical_data">Historical Data</a> <a id="menu_settings"
+						class="unselected" href="#settings">Settings</a> <a id="menu_help"
+						class="unselected" href="#help">Help</a> <a id="menu_logout"
+						class="unselected" href="#logout">Logout</a>
+				</div>
+				<div id="status_title" class="title">System Status:</div>
+				<div id="alerts">
+					<div id="alerts_none">
+						<img src="imgs/icon_checkMark_white.png" />No Alerts
+					</div>
+					<div id="alerts_yes" style="display: none;">
+						<img src="imgs/icon_alert.gif" /> Alerts!
+					</div>
+				</div>
+				<div id="outdoor_wrapper">
+					<div id="outdoor_title" class="title">
+						Outdoor<br />Conditions:
+					</div>
+					<div id="outdoor">
+						<table>
+							<tr>
+								<th>Temp</th>
+								<td id="outdoor_temp">NA</td>
+							</tr>
+							<tr>
+								<th>Humidity</th>
+								<td id="outdoor_humidity">NA</td>
+							</tr>
+							<tr>
+								<th>Pressure</th>
+								<td id="outdoor_pressure">NA</td>
+							</tr>
+                            <tr>
+                                <th>Wet Bulb</th>
+                                <td id="outdoor_wetbulb">NA</td>
+                            </tr>
+							<!-- <tr>
+							<th>Wind Speed</th>
+							<td>5 mph</td>
+						</tr> -->
+						</table>
+					</div>
+				</div>
+				<img src="imgs/decor_wheat.png" id="decor" />
+			</div>
+			<!-- CONTENT -->
+			<div id="content">
+                <img class="shifter" alt="Show Navigation" src="imgs/icon_navmax.png"/>
+				<div id="content_wrapper">
+					<div id="content_loading">
+						<img src="imgs/ajax-loader-big.gif" alt="Loading spinner" />
+					</div>
+					<!-- Current Data -->
+                    <div id="content_current_data">
+                        <ul>
+                        </ul>
+                    </div>
+                    <!-- Current Data -->
+					<div id="content_historical_data">
+						<h1>Year</h1>
+						<div id="content_historical_year">
+							<div class="label">
+								<label for="historical_year">Year</label>
+							</div>
+							<div>
+								<input type="text" id="historical_year" maxlength="4" />
+							</div>
+						</div>
+						<h1>Fills</h1>
+                        <h2>Reports PDF</h2>
+                        <div id="historical_fills_report_pdf">
+                            <div class="label"><label for="historical_fills_report_pdf_choice">Report</label></div>
+                            <div><select id="historical_fills_report_pdf_choice"></select></div>
+                            <div class="label">
+                                <button id="historical_fills_report_view" type="button"
+                                        value="View">View</button>
+                            </div>
+                        </div>
+
+                        <h2>Report</h2>
+						<div id="historical_fills_report">
+							<div style="display:none;">
+								<div class="label">
+									<label for="historical_fills_report_year">Year</label>
+								</div>
+								<div>
+									<input type="text" id="historical_fills_report_year"
+										maxlength="4" />
+								</div>
+							</div>
+							<div class="label">
+								<label for="historical_fills_report_fills1">Fill #s</label>
+							</div>
+							<div>
+								<input type="text" id="historical_fills_report_fills1" /> - <input
+									type="text" id="historical_fills_report_fills2" />
+							</div>
+							<div id="historical_fills_report_type_wrapper" class="label">
+								<input type="radio" id="historical_fills_report_type_fill"
+									name="historical_fills_report_type" /><label
+									for="historical_fills_report_type_fill">Fill Report</label> <input
+									type="radio" id="historical_fills_report_type_hybrid"
+									name="historical_fills_report_type" /><label
+									for="historical_fills_report_type_hybrid">Hybrid Report</label>
+							</div>
+							<div id="historical_fills_report_form_wrapper" class="label">
+								<input type="radio" id="historical_fills_report_form_full"
+									name="historical_fills_report_form" /><label
+									for="historical_fills_report_form_full">Full</label> <input
+									type="radio" id="historical_fills_report_form_tab"
+									name="historical_fills_report_form" /><label
+									for="historical_fills_report_form_tab">Tabulated</label> <input
+									type="radio" id="historical_fills_report_form_csv"
+									name="historical_fills_report_form" /><label
+									for="historical_fills_report_form_csv">CSV</label>
+							</div>
+							<div class="label">
+								<button id="historical_fills_report_view" type="button"
+									value="View">View</button>
+							</div>
+						</div>
+						<div class="priv_fill">
+							<h2>Manage Fills</h2>
+							<div id="historical_fills_manage">
+								<div class="right label">
+									<button id="new_fill" type="button" value="New Fill">
+										<img src="imgs/icon_add.png" alt="add" />New Fill
+									</button>
+								</div>
+								<img id="historical_fills_manage_table_spinner"
+									class="center_margins spinner" src="imgs/ajax-loader.gif"
+									alt="Loading Spinner" />
+								<table id="historical_fills_manage_table" class="display hover"
+									rules="rows">
+								</table>
+								<div class="clears"></div>
+							</div>
+							<div id="historical_fills_deduct_wrapper">
+								<h2>Air Deductions</h2>
+								<div id="historical_fills_deduct">
+									<div style="display: none;">
+										<div class="label">
+											<label for="historical_fills_deduct_year">Year</label>
+										</div>
+										<div>
+											<input type="text" id="historical_fills_deduct_year"
+												maxlength="4" />
+										</div>
+									</div>
+									<div class="right label">
+										<button id="new_deduction" type="button"
+											value="New Air Deduction">
+											<img src="imgs/icon_add.png" alt="add" />New Air Deduction
+										</button>
+									</div>
+									<img id="historical_fills_deduct_table_spinner"
+										class="center_margins spinner" src="imgs/ajax-loader.gif"
+										alt="Loading Spinner" />
+									<table id="historical_fills_deduct_table" class="display"
+										rules="rows">
+									</table>
+									<div class="clears"></div>
+								</div>
+							</div>
+						</div>
+						<div>
+							<h1>Data Download</h1>
+							<div id="content_historical_data_filters">
+								<div class="errors"></div>
+								<div class="float">
+									<label for="historical_start">Starting Date</label>
+									<div>
+										<input type="text" class="calendar" id="historical_start" />
+										<img src="imgs/icon_calendar.gif"
+											data-date_id="historical_start" alt="Pick date/time" />
+									</div>
+								</div>
+								<div class="float">
+									<label for="historical_end">Ending Date</label>
+									<div>
+										<input type="text" class="calendar" id="historical_end" /><img
+											src="imgs/icon_calendar.gif" data-date_id="historical_end"
+											alt="Pick date/time" />
+									</div>
+								</div>
+								<div class="float">
+									<label for="historical_bin">Bin</label><br /> <select
+										id="historical_bin">
+									</select>
+								</div>
+								<div class="float">
+									<label for="historical_bin_section">Bin Section</label><br />
+									<select id="historical_bin_section">
+									</select>
+								</div>
+								<div class="float">
+									<label for="historical_sensor_type">Sensors</label><br /> <select
+										id="historical_sensor_type">
+									</select>
+								</div>
+								<div class="clears"></div>
+								<div class="priv_super">
+									<input type="checkbox" id="historical_raw"><label
+										for="historical_raw">Include raws</label>
+								</div>
+								<div>
+									<button id="historical_data_results" type="button"
+										value="Results">Download CSV</button>
+								</div>
+							</div>
+						</div>
+						<div style="display: none">
+							<h2>Search</h2>
+							<div id="historical_fills_search">
+								<div class="label">
+									<label for="historical_fills_search_year">Year</label>
+								</div>
+								<div>
+									<input type="text" id="historical_fills_search_year"
+										maxlength="4" />
+								</div>
+								<div class="label">
+									<label>Parameters</label>
+								</div>
+								<div>
+									<input type="text" id="historical_fills_search_phrase" /> <select
+										id="historical_fills_search_category"><option>Fill
+											#</option>
+										<option>Hybrid</option>
+										<option>Field Code</option>
+										<option>Storage Bin Code</option>
+										<option>Storage Bin #</option>
+										<option>Bin</option>
+									</select>
+									<button id="historical_fills_search_add" type="button"
+										value="Add">
+										<img src="imgs/icon_add.png" alt="add" />
+									</button>
+								</div>
+								<div class="label">
+									<label for="historical_fills_search_operator">Operator</label>
+								</div>
+								<div>
+									<input type="radio" id="historical_fills_search_operator_and"
+										name="historical_fills_search_operator" /> <label
+										for="historical_fills_search_operator_and">And</label> <input
+										type="radio" id="historical_fills_search_operator_or"
+										name="historical_fills_search_operator" /> <label
+										for="historical_fills_search_operator_or">Or</label>
+								</div>
+								<div class="label">
+									<button id="historical_fills_search_search" type="button"
+										value="Search">Search</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="content_settings">
+						<!--  Probably don't need general settings, probably should be "Your Account" instead, a place to change your own phone/email -->
+						<!--
+						<h1>General Settings</h1>
+						<div id="content_settings_general_settings">
+							<div class="float">
+								<div>
+									<label for="settings_update_interval">Update Interval (in
+										seconds)</label>
+								</div>
+								<div>
+									<input type="text" id="settings_update_interval" />
+								</div>
+								<div class="label">
+									<label>MID Last IP Address</label>
+								</div>
+								<div>1.1.1.1</div>
+								<div class="label">
+									<button id="settings_save_settings" type="button" value="Save Settings">Save
+										Settings</button>
+								</div>
+							</div>
+							<div class="float">
+								<div>
+									<label>Configuration Deployed</label>
+								</div>
+								<div>True</div>
+							</div>
+							<div class="clears"></div>
+						</div> -->
+						<div class="priv_power">
+							<h1>Account Management</h1>
+							<div id="settings_account_settings">
+								<img id="settings_account_settings_spinner"
+									class="center_margins spinner" src="imgs/ajax-loader.gif"
+									alt="Loading Spinner" />
+								<div id="settings_account_settings_wrapper">
+									<button id="new_account" type="button" value="New Account">
+										<img src="imgs/icon_add.png" alt="add" />New Account
+									</button>
+									<table rules="rows" class="display"
+										id="settings_accounts_table">
+									</table>
+									<div class="clears"></div>
+								</div>
+							</div>
+						</div>
+						<h1>Alarms</h1>
+						<div id="settings_alarms">
+							<img id="settings_alarms_spinner" class="center_margins spinner"
+								src="imgs/ajax-loader.gif" alt="Loading Spinner" />
+							<div id="settings_alarms_wrapper">
+								<button id="new_alarm" type="button" value="New Alarm">
+									<img src="imgs/icon_add.png" alt="add" />New Alarm
+								</button>
+								<table rules="rows" class="display" id="settings_alarms_table">
+								</table>
+								<div class="clears"></div>
+							</div>
+						</div>
+						<div class="priv_config">
+						<h1>Device Configuration</h1>
+						<div id="settings_device">
+							<h2>Clone</h2>
+							Clone device configuration.
+							<div>
+							<label for="settings_device_clone_from_year">From Year: </label><input type="text" id="settings_device_clone_from_year" maxlength="4"/> <label for="settings_device_clone_to_year">To Year: </label><input type="text" id="settings_device_clone_to_year" maxlength="4"/><br/>
+							<button type="button" id="settings_device_clone_clone">Clone</button>
+							</div>
+						</div>
+						<h1>Lookup Tables</h1>
+						<div id="settings_lut_mc_maxtemp">
+							<h2>Moisture Content Max-Temp</h2>
+							<div id="settings_lut_mc_maxtemp_wrapper">
+								<img id="settings_lut_mc_maxtemp_spinner"
+									class="center_margins spinner" src="imgs/ajax-loader.gif"
+									alt="Loading Spinner" />
+								<div id="settings_lut_mc_maxtemp_buttons">
+									<button id="settings_new_lut_mc_maxtemp" type="button"
+										value="New LUT">
+										<img src="imgs/icon_add.png" alt="add" />New LUT
+									</button>
+									<table rules="rows" class="display"
+										id="settings_lut_mc_maxtemp_table">
+									</table>
+									<div class="clears"></div>
+								</div>
+							</div>
+						</div>
+						</div>
+					</div>
+					<div id="content_help">
+						<h1>Alarm Log</h1>
+						<img id="help_alarms_spinner" class="center_margins spinner"
+							src="imgs/ajax-loader.gif" alt="Loading Spinner" />
+						<div id="help_alarms">
+							<table rules="rows" class="display" id="help_alarms_table"></table>
+							<div class="clears"></div>
+						</div>
+						<div style="display: none">
+							<h1>Recent Errors</h1>
+							<div id="help_errors">
+								<table rules="rows" class="display" id="help_errors_table">
+								</table>
+								<div class="clears"></div>
+							</div>
+						</div>
+						<h1>User Manual</h1>
+						<div id="help_user_manual">
+							<div>
+								<a href=""><img src="imgs/UserManual.jpg" /></a><br/>Click on the download button to
+								download the Isadore User Manual.
+							</div>
+							<div id="help_user_manual_download">
+								<button type="button" value="Download">Download</button>
+							</div>
+						</div>
+						<h1>Contact Exoteric Analytics</h1>
+						<div id="help_contact">
+							<div class="errors"></div>
+							<div class="float">
+								<div>
+									<label for="help_contact_name">Name</label>
+								</div>
+								<div>
+									<input type="text" id="help_contact_name" />
+								</div>
+								<div class="label">
+									<label for="help_contact_email">Email Address</label>
+								</div>
+								<div>
+									<input type="text" id="help_contact_email" />
+								</div>
+								<div class="label">
+									<label for="help_contact_subject">Subject</label>
+								</div>
+								<div>
+									<input type="text" id="help_contact_subject" />
+								</div>
+							</div>
+							<div class="float">
+								<div>
+									<label for="help_contact_message">Message</label>
+								</div>
+								<div>
+									<textarea id="help_contact_message"></textarea>
+								</div>
+							</div>
+							<div class="clears"></div>
+							<div id="help_contact_buttons">
+								<img id="help_contact_spinner" class="spinner"
+									src="imgs/ajax-loader.gif" alt="Loading Spinner" />
+								<button type="button" id="help_contact_send">Send Email</button>
+								<button type="button" id="help_contact_clear">Clear</button>
+								<span id="help_contact_send_status"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="hidden_wrapper" style="display: none;">
+		<div id="bin_lightbox">
+			<div id="bin_lightbox_previous" class="lightbox_previous"></div>
+			<div id="bin_lightbox_next" class="lightbox_next"></div>
+			<div id="bin_lightbox_fadewrapper">
+				<div id="bin_lightbox_tabs">
+					<ul>
+                        <li><a id="bin_lightbox_tabs-graph_new_selector"
+                               href="#bin_lightbox_tabs-graph_new">Graphs</a></li>
+						<li><a id="bin_lightbox_tabs-graph_selector"
+							href="#bin_lightbox_tabs-graph">Graphs(Old)</a></li>
+						<li><a id="bin_lightbox_tabs-control_selector"
+							class="priv_config" href="#bin_lightbox_tabs-control">Control</a>
+						</li>
+						<li><a id="bin_lightbox_tabs-fill_selector"
+							href="#bin_lightbox_tabs-fillinfo">Fill Info</a></li>
+						<li><a id="bin_lightbox_tabs-setup_selector"
+							class="priv_config" href="#bin_lightbox_tabs-setup">Setup</a></li>
+					</ul>
+                    <div id="bin_lightbox_tabs-graph_new" class="bin_lightbox_overflow">
+                    </div>
+					<div id="bin_lightbox_tabs-graph" class="bin_lightbox_overflow">
+					</div>
+					<div id="bin_lightbox_tabs-control" class="bin_lightbox_overflow">
+						<img id="bin_lightbox_control_spinner"
+							class="center_margins spinner" src="imgs/ajax-loader.gif"
+							alt="Loading Spinner" />
+						<div id="bin_lightbox_control_exist">
+							<div class="errors"></div>
+							<div id="bin_lightbox_control_fields"></div>
+							<img id="bin_lightbox_control_save_spinner" class="spinner"
+								src="imgs/ajax-loader.gif" alt="Loading Spinner" />
+							<button id="bin_lightbox_control_save" type="button" value="Save">Save
+							</button>
+						</div>
+						<div id="bin_lightbox_control_noexist">There are no controls
+							availible at this location.</div>
+					</div>
+					<div id="bin_lightbox_tabs-fillinfo" class="bin_lightbox_overflow">
+						<img id="bin_lightbox_fill_spinner" class="center_margins spinner"
+							src="imgs/ajax-loader.gif" alt="Loading Spinner" />
+						<div id="bin_lightbox_fill_wrapper">
+							<div id="bin_lightbox_fillinfo">
+								<div id="bin_lightbox_fillinfo_na">
+									<span id="bin_lightbox_fill_info_na_binname"></span> does not
+									get filled.
+								</div>
+								<div id="bin_lightbox_fillinfo_nonexist">There is
+									currently no open fill number for the bin. To make a new fill,
+									click on the 'New Fill' button below.</div>
+								<div id="bin_lightbox_fillinfo_exist">
+									<div class="float">
+										<div class="label">
+											<label>Fill Number</label>
+										</div>
+										<div>
+											<span id="bin_lightbox_fillinfo_fillnumber"></span>
+										</div>
+                                        <div class="label">
+                                            <label>Fill Type</label>
+                                        </div>
+                                        <div>
+                                            <span id="bin_lightbox_fillinfo_fill_type"></span>
+                                        </div>
+										<div class="label">
+											<label>Rotation Number</label>
+										</div>
+										<div>
+											<span id="bin_lightbox_fillinfo_rotationnumber"></span>
+										</div>
+										<div class="label">
+											<label>Filled Date/Time</label>
+										</div>
+										<div>
+											<span id="bin_lightbox_fillinfo_filled"></span>
+										</div>
+										<div class="label">
+											<label>Emptied Date/Time</label>
+										</div>
+										<div>
+											<span id="bin_lightbox_fillinfo_emptied"></span>
+										</div>
+										<div class="label">
+											<label>Air Start Date/Time</label>
+										</div>
+										<div>
+											<span id="bin_lightbox_fillinfo_start"></span>
+										</div>
+										<div id="bin_lightbox_fillinfo_single_roll_option">
+											<div class="label">
+												<label>Air Roll Date/Time</label>
+											</div>
+											<div>
+												<span id="bin_lightbox_fillinfo_single_roll"></span>
+											</div>
+										</div>
+										<div class="label">
+											<label>Air End Date/Time</label>
+										</div>
+										<div>
+											<span id="bin_lightbox_fillinfo_end"></span>
+										</div>
+									</div>
+									<div class="float">
+										<div class="label">
+											<label>Hybrid Code(s)</label>
+										</div>
+										<div>
+											<span id="bin_lightbox_fillinfo_hybridcode"></span>
+										</div>
+										<div class="label">
+											<label>Field Code(s)</label>
+										</div>
+										<div>
+											<span id="bin_lightbox_fillinfo_fieldcode"></span>
+										</div>
+										<div class="label">
+											<label>Truck(s)</label>
+										</div>
+										<div>
+											<span id="bin_lightbox_fillinfo_truck"></span>
+										</div>
+                                        <div class="label">
+                                            <label>Lot Number</label>
+                                        </div>
+                                        <div>
+                                            <span id="bin_lightbox_fillinfo_lotnumber"></span>
+                                        </div>
+                                        <div class="label">
+                                            <label>Storage Bin Number</label>
+                                        </div>
+                                        <div>
+                                            <span id="bin_lightbox_fillinfo_storagebinnumber"></span>
+                                        </div>
+										<div class="label">
+											<label>Storage Bin Code</label>
+										</div>
+										<div>
+											<span id="bin_lightbox_fillinfo_storagebincode"></span>
+										</div>
+										<div class="label">
+											<label>Bushels</label>
+										</div>
+										<div>
+											<span id="bin_lightbox_fillinfo_bushels"></span>
+										</div>
+
+									</div>
+									<div class="clears"></div>
+									<div id="bin_lightbox_fill_info_multiple_rolls_option">
+										<h2>Rolls</h2>
+										<div id="bin_lightbox_fillinfo_rolls">
+											<ul>
+											</ul>
+										</div>
+									</div>
+									<h2>Moisture Content</h2>
+									<div id="bin_lightbox_fillinfo_mc">
+										<div class="float">
+											<div class="label">
+												<label>Pre</label>
+												<ul id="bin_lightbox_fillinfo_pre_mc">
+												</ul>
+											</div>
+										</div>
+										<div class="float">
+											<div class="label">
+												<label>During</label>
+												<ul id="bin_lightbox_fillinfo_during_mc">
+												</ul>
+											</div>
+										</div>
+										<div class="float">
+											<div class="label">
+												<label>Post</label>
+												<ul id="bin_lightbox_fillinfo_post_mc">
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div class="clears"></div>
+								</div>
+							</div>
+							<div class="priv_fill">
+							<div id="bin_lightbox_fill_buttons">
+								<button type="button" id="bin_lightbox_fill_edit" value="113">
+									<img src="imgs/icon_edit_button.png" />Edit Fill
+								</button>
+								<button type="button" id="bin_lightbox_fill_new" value="113">
+									<img src="imgs/icon_add.png" />New Fill
+								</button>
+							</div>
+							</div>
+						</div>
+					</div>
+					<div id="bin_lightbox_tabs-setup" class="bin_lightbox_overflow">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="account_lightbox">
+			<h1>Add/Edit Account</h1>
+			<div class="errors"></div>
+			<div id="account_lightbox_active">
+				<div class="float">
+					<div class="label">
+						<label for="account_lightbox_name">Name</label>
+					</div>
+					<div>
+						<input type="text" id="account_lightbox_name" />
+					</div>
+					<div class="label">
+						<label for="account_lightbox_email">Email</label>
+					</div>
+					<div>
+						<input type="text" id="account_lightbox_email" />
+					</div>
+					<div class="label">
+						<label for="account_lightbox_phone">Phone</label>
+					</div>
+					<div>
+						<input type="text" id="account_lightbox_phone" />
+					</div>
+				</div>
+				<div class="float">
+					<div class="label">
+						<label for="account_lightbox_privilege">Privilege</label>
+					</div>
+					<div>
+						<select id="account_lightbox_privilege">
+						</select>
+					</div>
+				</div>
+				<div class="clears"></div>
+				<div class="label">
+					<img id="account_lightbox_save_spinner" class="spinner"
+						src="imgs/ajax-loader.gif" alt="Loading Spinner" />
+					<button id="account_lightbox_save" type="button" value="Save">Save
+					</button>
+					<button id="account_lightbox_cancel" type="button" value="Cancel">Cancel</button>
+				</div>
+			</div>
+			<div id="account_lightbox_done">
+				<p>
+					The account has been saved.<span id="account_lightbox_done_new">
+						An email has been sent out to the new account holder.</span>
+				</p>
+				<br />
+				<button id="account_lightbox_done_close" type="button"
+					value="Cancel">Close</button>
+			</div>
+		</div>
+		<div id="alarm_lightbox">
+			<h1>Alarm</h1>
+			<div class="errors"></div>
+			<div class="float">
+				<div class="label">
+					<label for="alarm_lightbox_type">Alarm Type</label>
+				</div>
+				<div>
+					<select id="alarm_lightbox_type"></select>
+				</div>
+			</div>
+			<div id="alarm_lightbox_threshold_options">
+				<div class="float">
+					<div class="label">
+						<label for="alarm_lightbox_condition">Condition</label>
+					</div>
+					<div>
+						<select id="alarm_lightbox_condition"><option
+								value="true">&gt;</option>
+							<option value="false">&lt;</option>
+						</select>
+					</div>
+				</div>
+				<div class="float">
+					<div class="label">
+						<label for="alarm_lightbox_value">Value</label>
+					</div>
+					<div>
+						<input type="text" id="alarm_lightbox_value" />
+					</div>
+				</div>
+			</div>
+			<div class="clears"></div>
+			<div id="alarm_lightbox_contact">
+				<h2>Contact</h2>
+				<div class="label">
+					<label for="alarm_lightbox_account">Account</label>
+				</div>
+				<div>
+					<select id="alarm_lightbox_account"></select>
+				</div>
+				<div id="alarm_lightbox_contact_types" class="label"></div>
+			</div>
+			<div class="label">
+				<img id="alarm_lightbox_save_spinner" class="spinner"
+					src="imgs/ajax-loader.gif" alt="Loading Spinner" />
+				<button id="alarm_lightbox_save" type="button" value="Save">Save</button>
+				<button id="alarm_lightbox_cancel" type="button" value="Cancel">Cancel</button>
+			</div>
+		</div>
+		<div id="delete_lightbox">
+			<h1>Delete XXXX</h1>
+			Are you sure you want to delete the entry:
+			<div id="delete_lightbox_entry_info">Entry info</div>
+			<div class="label">
+				<img id="delete_lightbox_delete_spinner" class="spinner"
+					src="imgs/ajax-loader.gif" alt="Loading Spinner" />
+				<button id="delete_lightbox_delete" type="button" value="Delete">Delete</button>
+				<button id="delete_lightbox_cancel" type="button" value="Cancel">Cancel</button>
+			</div>
+		</div>
+		<div id="confirm_lightbox">
+			<h1>Confirm XXXX</h1>
+			<span id="confirm_lightbox_top">Are you sure you want to do whatever?</span>
+			<div id="confirm_lightbox_entry_info">info</div>
+			<div class="label">
+				<img id="confirm_lightbox_confirm_spinner" class="spinner"
+					src="imgs/ajax-loader.gif" alt="Loading Spinner" />
+				<button id="confirm_lightbox_confirm" type="button" value="Confirm">Delete</button>
+				<button id="confirm_lightbox_cancel" type="button" value="Cancel">Cancel</button>
+			</div>
+		</div>
+		<div id="ok_lightbox">
+			<h1>Info</h1>
+			<div id="ok_lightbox_info">info</div>
+			<div class="label">
+				<button id="ok_lightbox_ok" type="button" value="Confirm">Okay</button>
+			</div>
+		</div>
+		<div id="newfill_lightbox">
+			<h1>New Fill</h1>
+			<div class="errors"></div>
+			<div class="float">
+				<div class="label">
+					<label for="newfill_lightbox_fillnumber">Fill Number</label>
+				</div>
+				<div>
+					<input type="text" id="newfill_lightbox_fillnumber" />
+				</div>
+				<div class="label">
+					<label for="newfill_lightbox_bin">Bin</label>
+				</div>
+				<div>
+					<select id="newfill_lightbox_bin">
+					</select>
+				</div>
+				<div class="label">
+					<label for="newfill_lightbox_start">Air Start Date/Time</label>
+				</div>
+				<div>
+					<input type="text" class="calendar" id="newfill_lightbox_start" />
+					<img src="imgs/icon_calendar.gif"
+						data-date_id="newfill_lightbox_start" alt="Pick date/time" />
+				</div>
+			</div>
+			<div class="clears"></div>
+			<div class="label">
+				<img id="newfill_lightbox_save_spinner" class="spinner"
+					src="imgs/ajax-loader.gif" alt="Loading Spinner" />
+				<button id="newfill_lightbox_save" type="button" value="Save">Save</button>
+			</div>
+		</div>
+		<div id="editfill_lightbox">
+            <div id="editfill_lightbox_previous" class="lightbox_previous"></div>
+            <div id="editfill_lightbox_next" class="lightbox_next"></div>
+			<h1>Edit Fill</h1>
+            <div id="editfill_lightbox_overflow_spinner">
+                <img style="display: block; margin-left: auto; margin-right: auto;" src="imgs/ajax-loader.gif" alt="Loading Spinner" />
+           </div>
+			<div id="editfill_lightbox_overflow">
+				<div id="editfill_lightbox_nonarray">
+					<div class="errors"></div>
+					<div class="float">
+						<div class="label">
+							<label for="editfill_lightbox_fillnumber">Fill Number</label>
+						</div>
+						<div>
+							<input type="text" id="editfill_lightbox_fillnumber" data-key="fill_number" data-type="numeric;decimal:false;negative:false"/>
+						</div>
+						<div class="label">
+							<label for="editfill_lightbox_bin">Bin</label>
+						</div>
+						<div>
+							<select id="editfill_lightbox_bin" data-key="bin_id" data-type="numeric;decimal:false;negative:false">
+							</select>
+						</div>
+                        <div class="label">
+                            <label for="editfill_lightbox_fill_type">Fill Type</label>
+                        </div>
+                        <div>
+                            <select id="editfill_lightbox_fill_type" data-key="fill_type_id" data-type="numeric;decimal:false;negative:false">
+                            </select>
+                        </div>
+						<div class="label">
+							<label for="editfill_lightbox_rotationnumber">Rotation
+								Number</label>
+						</div>
+						<div>
+							<input type="text" id="editfill_lightbox_rotationnumber" data-key="rotation_number" data-type="numeric;decimal:false;negative:false"/>
+						</div>
+						<div class="label">
+							<label for="editfill_lightbox_filled">Filled Date/Time</label>
+						</div>
+						<div>
+							<input type="text" class="calendar" id="editfill_lightbox_filled" data-key="filled_datetime" data-type="datetime"/>
+							<img src="imgs/icon_calendar.gif"
+								data-date_id="editfill_lightbox_filled" alt="Pick date/time" />
+						</div>
+						<div class="label">
+							<label for="editfill_lightbox_emptied">Emptied Date/Time</label>
+						</div>
+						<div>
+							<input type="text" class="calendar"
+								id="editfill_lightbox_emptied" data-key="emptied_datetime" data-type="datetime"/> <img
+								src="imgs/icon_calendar.gif"
+								data-date_id="editfill_lightbox_emptied" alt="Pick date/time" />
+						</div>
+					</div>
+
+					<div class="float">
+						<div class="label">
+							<label for="editfill_lightbox_start">Air Start Date/Time</label>
+						</div>
+						<div>
+							<input type="text" class="calendar" id="editfill_lightbox_start" data-key="air_begin_datetime" data-type="datetime"/>
+							<img src="imgs/icon_calendar.gif"
+								data-date_id="editfill_lightbox_start" alt="Pick date/time" />
+						</div>
+						<div id="editfill_lightbox_nonarray_roll_option">
+							<div class="label">
+								<label for="editfill_lightbox_nonarray_roll">Air Roll
+									Date/Time</label>
+							</div>
+							<div>
+								<input type="text" class="calendar"
+									id="editfill_lightbox_nonarray_roll" data-key="roll_datetime" data-type="array;datetime"/> <img
+									src="imgs/icon_calendar.gif"
+									data-date_id="editfill_lightbox_nonarray_roll"
+									alt="Pick date/time" />
+							</div>
+						</div>
+						<div class="label">
+							<label for="editfill_lightbox_end">Air End Date/Time</label>
+						</div>
+						<div>
+							<input type="text" class="calendar" id="editfill_lightbox_end" data-key="air_end_datetime" data-type="datetime"/>
+							<img src="imgs/icon_calendar.gif"
+								data-date_id="editfill_lightbox_end" alt="Pick date/time" />
+						</div>
+						<div class="label">
+							<label for="editfill_lightbox_hybridcode">Hybrid Code(s)</label>
+						</div>
+						<div>
+							<textarea id="editfill_lightbox_hybridcode" data-key="hybrid_code"></textarea>
+						</div>
+                        <div class="label">
+                            <label for="editfill_lightbox_depth">Depth</label>
+                        </div>
+                        <div>
+                            <input type="text" id="editfill_lightbox_depth" data-key="depth" data-type="numeric;decimal:true;negative:false"/>
+                        </div>
+
+					</div>
+					<div class="float">
+						<div class="label">
+							<label for="editfill_lightbox_fieldcode">Field Code(s)</label>
+						</div>
+						<div>
+							<textarea id="editfill_lightbox_fieldcode" data-key="field_code"></textarea>
+						</div>
+						<div class="label">
+							<label for="editfill_lightbox_truck">Truck(s)</label>
+						</div>
+						<div>
+							<textarea id="editfill_lightbox_truck" data-key="truck"></textarea>
+						</div>
+                        <div class="label">
+                            <label for="editfill_lightbox_lotnumber">Lot Number</label>
+                        </div>
+                        <div>
+                            <input type="text" id="editfill_lightbox_lotnumber" data-key="lot_number"/>
+                        </div>
+						<div class="label">
+							<label for="editfill_lightbox_storagebinnumber">Storage
+								Bin Number</label>
+						</div>
+						<div>
+							<input type="text" id="editfill_lightbox_storagebinnumber" data-key="storage_bin_number" data-type="numeric;decimal:false;negative:false"/>
+						</div>
+						<div class="label">
+							<label for="editfill_lightbox_storagebincode">Storage Bin
+								Code</label>
+						</div>
+						<div>
+							<input type="text" id="editfill_lightbox_storagebincode" data-key="storage_bin_code"/>
+						</div>
+						<div class="label">
+							<label for="editfill_lightbox_bushels">Bushels</label>
+						</div>
+						<div>
+							<input type="text" id="editfill_lightbox_bushels" data-key="bushels" data-type="numeric;decimal:true;negative:false"/>
+						</div>
+
+					</div>
+					<div class="clears"></div>
+				</div>
+				<div id="editfill_lightbox_array_rolls_option">
+					<h2>Rolls</h2>
+					<div id="editfill_lightbox_rolls">
+						<ul>
+						</ul>
+					</div>
+				</div>
+				<h2>Moisture Content</h2>
+				<div id="editfill_lightbox_mc">
+					<div class="float">
+						<div class="label">
+							<label>Pre</label>
+							<ul id="editfill_lightbox_pre_mc">
+							</ul>
+						</div>
+					</div>
+					<div id="edit_fill_lightbox_during_mc_wrapper" class="float">
+						<div class="label">
+							<label>During</label>
+							<ul id="editfill_lightbox_during_mc">
+							</ul>
+						</div>
+					</div>
+					<div class="float">
+						<div class="label">
+							<label>Post</label>
+							<ul id="editfill_lightbox_post_mc">
+							</ul>
+						</div>
+					</div>
+                    <div class="clears"></div>
+                    <div id="editfill_lightbox_sheller_windows_wrapper">
+                        <div class="label">
+                            <label>Sheller</label>
+                            <div>You must click plus icon for it to be saved.</div>
+                            <ul id="editfill_lightbox_sheller_windows"></ul>
+                        </div>
+                    </div>
+				</div>
+				<div class="clears"></div>
+                <div class="label right">
+                    <img id="editfill_lightbox_save_spinner" class="spinner"
+                         src="imgs/ajax-loader.gif" alt="Loading Spinner" />
+                    <button id="editfill_lightbox_ok" type="button" value="SaveClose">OK</button>
+                    <button id="editfill_lightbox_apply" type="button" value="Save">Apply</button>
+                    <button id="editfill_lightbox_cancel" type="button" value="Cancel">Cancel</button>
+                    <span id="editfill_lightbox_save_status"></span>
+                </div>
+			</div>
+		</div>
+		<div id="deduction_lightbox">
+			<h1>Air Deduction</h1>
+			<div id="deduction_lightbox_overflow">
+				<div class="errors"></div>
+				<div class="float">
+					<div class="label">
+						<label for="deduction_lightbox_begin">Air deduction begin</label>
+					</div>
+					<div>
+						<input type="text" class="calendar" id="deduction_lightbox_begin" />
+						<img src="imgs/icon_calendar.gif"
+							data-date_id="deduction_lightbox_begin" alt="Pick date/time" />
+					</div>
+				</div>
+				<div class="float">
+					<div class="label">
+						<label for="deduction_lightbox_end">Air deduction end</label>
+					</div>
+					<div>
+						<input type="text" class="calendar" id="deduction_lightbox_end" />
+						<img src="imgs/icon_calendar.gif"
+							data-date_id="deduction_lightbox_end" alt="Pick date/time" />
+					</div>
+				</div>
+				<div class="clears"></div>
+				<div class="label">
+					<label>Minutes</label>
+				</div>
+				<div>
+					<span id="deduction_lightbox_mins"></span>
+				</div>
+			</div>
+			<div class="label">
+				<img id="deduction_lightbox_save_spinner" class="spinner"
+					src="imgs/ajax-loader.gif" alt="Loading Spinner" />
+				<button id="deduction_lightbox_save" type="button" value="Save">Save</button>
+				<span id="deduction_lightbox_save_status"></span>
+			</div>
+		</div>
+		<div id="settings_lut_mc_maxtemp_lightbox">
+			<h1>MC Maxtemp Look Up Table</h1>
+			<div class="errors"></div>
+			<div class="success"></div>
+			<img id="settings_lut_mc_maxtemp_edit_open_spinner" class="spinner"
+				src="imgs/ajax-loader.gif" alt="Loading Spinner" />
+			<div id="settings_lut_mc_maxtemp_lightbox_wrapper">
+				<div class="label">
+					<label for="settings_luc_mc_maxtemp_edit_name">Name</label>
+				</div>
+				<div>
+					<input type="text" id="settings_luc_mc_maxtemp_edit_name" />
+				</div>
+				<div class="label">
+					<label for="settings_luc_mc_maxtemp_edit_name">Hours/MCPt</label>
+				</div>
+				<div>
+					<input type="text" id="settings_luc_mc_maxtemp_edit_hours_per_mc" />
+				</div>
+				<table id="settings_luc_mc_maxtemp_edit_table">
+					<thead>
+						<tr>
+							<th><label>MC</label></th>
+							<th><label>Max Temp</label></th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="2" style="text-align: right;"><button
+									type="button" id="settings_luc_mc_maxtemp_edit_more">More</button></td>
+						</tr>
+					</tfoot>
+				</table>
+				<div class="label">
+					<img id="settings_lut_mc_maxtemp_edit_save_spinner" class="spinner"
+						src="imgs/ajax-loader.gif" alt="Loading Spinner" />
+					<button id="settings_lut_mc_maxtemp_edit_save" type="button"
+						value="Save">Save</button>
+				</div>
+			</div>
+		</div>
+		<div id="error_dialog" title="Error">Test</div>
+	</div>
+</body>
+</html>

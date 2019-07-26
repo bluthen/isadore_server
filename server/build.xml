@@ -1,0 +1,24 @@
+<project name="isadore_www" default="help" basedir=".">
+
+	<target name="deploy" if="site">
+		<copy todir="/www/${site}.example.com/webapps/isadore/isadoreapp">
+			<fileset dir="./isadoreapp" excludes="**/*.cfg" />
+		</copy>
+		<mkdir dir="/www/${site}.example.com/webapps/isadore/s/doc"/>
+		<copy todir="/www/${site}.example.com/webapps/isadore/s/doc">
+			<fileset dir="./doc" />
+		</copy>
+		<mkdir dir="/www/${site}.example.com/webapps/isadore/sessions"/>
+		<mkdir dir="/www/${site}.example.com/webapps/isadore/gen_data"/>
+	</target>
+
+	<target name="help">
+		<echo message="Usage: ant [target]"/>
+		<echo message=""/>
+		<echo message="Targets:"/>
+		<echo message="   isadoretest                Deploys to isadoretest."/>
+		<echo message="   deploy -Dsite=sitename     Deploys to sitename."/>
+		<echo message=""/>
+	</target>
+
+</project>

@@ -1,0 +1,11 @@
+[MID]
+midpass=mid_pass_from_general_db
+baseurl=https://isadore.example.com
+[database]
+dbuser = dbuser
+dbname = dbname
+dbpass = dbpass
+dbhost = dbhostname
+[twilio]
+account=account_code
+token=token_code

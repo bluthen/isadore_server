@@ -1,0 +1,108 @@
+<project name="isadore_www" default="help" basedir=".">
+
+	<target name="compile">
+		<mkdir dir="build"/>
+		<!--
+		<concat fixlastline="yes" destfile="build/isadore_coffee.coffee">
+			<fileset dir="src/coffee" includesfile="src/coffee/FILES"/>
+		</concat> 
+		<exec executable="coffee">
+			<arg line="-c -o build/js build/isadore_coffee.coffee"/>
+		</exec>
+		-->
+		<exec executable="coffee">
+			<arg line="-c -o build/js src/coffee/login/login.coffee"/>
+		</exec>
+		<exec executable="coffee">
+			<arg line="-c -o build/js src/coffee/isadore_graphs/isadore_graphs.coffee"/>
+		</exec>
+		<exec executable="coffee">
+			<arg line="-c -o build/js src/coffee/handler/isadore_dialog.coffee"/>
+		</exec>
+		<exec executable="coffee">
+			<arg line="-c -o build/js src/coffee/handler/isadore_current_data_setup_tab.coffee"/>
+		</exec>
+		<exec executable="coffee">
+			<arg line="-c -o build/js src/coffee/isadore_graphs/isadore_graph_tab.coffee"/>
+		</exec>
+		<exec executable="coffee">
+			<arg line="-c -o build/js src/coffee/isadore_graphs/isadore_control_graphs.coffee"/>
+		</exec>
+		<exec executable="coffee">
+			<arg line="-c -o build/js src/coffee/handler/isadore_current_data_handler.coffee"/>
+		</exec>
+		<exec executable="coffee">
+			<arg line="-c -o build/js src/coffee/handler/YourAccountSettings.coffee"/>
+		</exec>
+		<exec executable="coffee">
+			<arg line="-c -o build/js src/coffee/handler/isadore_current_bl_filltab.coffee"/>
+		</exec>
+		<exec executable="coffee">
+			<arg line="-c -o build/js src/coffee/handler/isadore_settings_lut_maxtemp.coffee"/>
+		</exec>
+		<exec executable="coffee">
+			<arg line="-c -o build/js src/coffee/handler/DataManager.coffee"/>
+		</exec>
+		<exec executable="coffee">
+			<arg line="-c -o build/js src/coffee/isadore_graphs/TimeGraph.coffee"/>
+		</exec>
+        <exec executable="coffee">
+            <arg line="-c -o build/js src/coffee/isadore_graphs/ImageAnimator.coffee"/>
+        </exec>
+        <exec executable="coffee">
+            <arg line="-c -o build/js src/coffee/isadore_graphs/ImageHeatmap.coffee"/>
+        </exec>
+		<exec executable="coffee">
+			<arg line="-c -o build/js src/coffee/isadore_graphs/GraphsTabCustom.coffee"/>
+		</exec>
+		<exec executable="coffee">
+			<arg line="-c -o build/js src/coffee/isadore_graphs/SimpleGrapher.coffee"/>
+		</exec>
+		<exec executable="coffee">
+			<arg line="-c -o build/js src/coffee/handler/isadore_settings_general_config_config.coffee"/>
+		</exec>
+		<exec executable="coffee">
+			<arg line="-c -o build/js src/coffee/handler/GaugeSensorStatus.coffee"/>
+		</exec>
+		<exec executable="python">
+			<arg line="fingerprint.py"/>
+		</exec>
+	</target>
+
+	<target name="isadoretest">
+		<property name="site" value="isadoretest"/>
+		<antcall target="deploy" inheritAll="true"/>
+	</target>
+
+	<target name="prepare" if="site">
+		<mkdir dir="/www/${site}.example.com/webapps/isadore/s"/>
+		<mkdir dir="/www/${site}.example.com/webapps/isadore/views"/>
+	</target>
+
+	<target name="deploy" if="site" depends="prepare,compile">
+		<copy todir="/www/${site}.example.com/webapps/isadore/s">
+			<fileset dir="./src" excludes="**/coffee/**,**/*.cfg,**/*.html,**/views/*,**/views" />
+		</copy>
+		<copy todir="/www/${site}.example.com/webapps/isadore/s/js">
+			<fileset dir="./build/js" excludes="**/*.cfg" />
+		</copy>
+		<copy todir="/www/${site}.example.com/webapps/isadore/s">
+			<fileset dir="./build/src" excludes="**/*.cfg,**/views/*,**/views" />
+		</copy>
+		<copy todir="/www/${site}.example.com/webapps/isadore/views">
+			<fileset dir="./build/src/views" excludes="**/*.cfg" />
+		</copy>
+		<mkdir dir="/www/${site}.example.com/webapps/isadore/sessions"/>
+	</target>
+
+	<target name="help">
+		<echo message="Usage: ant [target]"/>
+		<echo message=""/>
+		<echo message="Targets:"/>
+		<echo message="   compile                    Inspects/minimizer JS"/>
+		<echo message="   isadoretest                Deployes to isadoretest."/>
+		<echo message="   deploy -Dsite=sitename     Deploys to sitename."/>
+		<echo message=""/>
+	</target>
+
+</project>
