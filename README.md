@@ -76,11 +76,11 @@ cp $GIT_LOC/server/settings.cfg.example /www/$DBNAME/webapps/isadore/settings.cf
 
 ### Passwords Configuration
 
-Set db midpass
+Set DB midpass:
 ```
 psql -U $DBNAME -c "update table general_config set mid_pass='someotherpassword';"
 ```
-Modify /www/$DBNAME/webapps/isadore/settings.cfg
+Modify `/www/$DBNAME/webapps/isadore/settings.cfg`
 Make sure `midpass`, `dbuser`, `dbpass`, `dbhost` are correct.
 
 If using twilio for alerts, make sure `account` and `token` are correct for your twilio account.
