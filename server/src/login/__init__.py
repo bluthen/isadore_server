@@ -23,6 +23,7 @@ import time
 
 @route('/resources/login', method=["POST"])
 def login():
+	response = HTTPResponse(output="Logged in", status=204)
 	email = request.params.get('email', None)
 	password = request.params.get('password', None)
 	if(not email or not password):
@@ -42,7 +43,7 @@ def login():
 	else:
 		response.set_cookie('exemail', request.user.email, path='/')
 		response.set_cookie('exrhash', session_hash, path='/')
-	return HTTPResponse(output="Logged in", status=204)
+	return response
 
 @route('/resources/login/check', method=["POST"])
 @authorized('User')
@@ -53,6 +54,7 @@ def check():
 
 @route('/resources/login/logout', method="PUT")
 def logout():
+	response = HTTPResponse(output="Logged out", status=204)
 	try:
 		account = get_account('User')
 	except:
@@ -62,7 +64,7 @@ def logout():
 	#TODO: Remove hash from session table?
 	response.delete_cookie("exemail", path='/')
 	response.delete_cookie("exrhash", path='/')
-	return HTTPResponse(output="Logged out", status=204)
+	return response
 	
 
 
