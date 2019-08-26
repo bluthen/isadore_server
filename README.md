@@ -17,6 +17,9 @@ The server code for the Isadore Dryer Management System. Originally released wit
 
 ## Example to install on Ubuntu LTS
 
+**Note** In these examples `$DBNAME` should be the name you choose. Maybe your dryer name, do not keep it as `$DBNAME`.
+
+
 ### Update and Install prereqs
 
 ```  
@@ -40,7 +43,6 @@ export GIT_LOC=`pwd`
 
 ```
 su - postgres
-export DBNAME=the_db_name
 createuser $DBNAME
 createdb $DBNAME -O $DBNAME
 psql -c "ALTER USER $DBNAME password 'somerandompassword';
@@ -132,3 +134,36 @@ _example_password
 
 After logging in pasting the contents of `$GIT_LOC/server/src/general_config.example.json` into the Settings -> General Config, it may help get your Current Data views started. For further customization look into at the top comments in the file `$GIT_LOC/clients/www/src/coffee/handler/isadore_current_data_handler.coffee`
 
+
+### Alarm Service
+
+There is a alarm service to watch if it should sent email or text alerts. A way to start this one boot is using systemd.
+
+Make a file in `/etc/systemd/system/$DBNAME_alarmwatcher.service`
+
+with contents
+
+```
+[Unit]
+Description=AlarmWatcher Service
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/www/$DBNAME/webapps/isadore
+ExecStart=/usr/bin/python2 alarm_watcher.py start
+ExecStop=/usr/bin/python2 alarm_watcher.py stop 
+Type=forking
+PIDFile=/www/$DBNAME/webapps/isadore/alarm_watcher.pid
+
+[Install]
+WantedBy=multi-user.target
+ 
+```
+
+Then Run:
+```
+systemctl enable $DBNAME_alarmwatcher
+systemctl start $DBNAME_alarmwatcher
+```

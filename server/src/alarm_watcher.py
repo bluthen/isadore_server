@@ -26,6 +26,10 @@ import logging
 import json
 import traceback
 from localtz import LocalTimezone
+import psycopg2
+import psycopg2.extras
+psycopg2.extras.register_default_json(loads=lambda x: x)
+
 # import alerts
 
 
