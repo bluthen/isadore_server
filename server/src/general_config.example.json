@@ -1,0 +1,914 @@
+{
+  "dialog_graphs": {
+    "Isadore Graph": {
+      "name_match": "^Bin ",
+      "queries": [
+        {
+          "time": {
+            "begin_datetime": "$begin_datetime$",
+            "end_datetime": "$end_datetime$",
+            "sample_period": 5
+          },
+          "labels": {
+            "title": "$bin_name$",
+            "y0label": "<span style=\"color: #FF0000\">&deg;F</span>",
+            "y1label": "<span style=\"color: #0010A5\">%</span>"
+          },
+          "data": [
+            {
+              "value": "$bin_name$.inlet.Temp",
+              "display": {
+                "label": "Inlet T",
+                "color": "#FF0000",
+                "pattern": null,
+                "axis": 0
+              }
+            },
+            {
+              "value": "$bin_name$.outlet.Temp",
+              "display": {
+                "label": "Outlet T",
+                "color": "#FF0000",
+                "pattern": [
+                  2,
+                  2
+                ],
+                "axis": 0
+              }
+            },
+            {
+              "value": "$bin_name$.inlet.RH",
+              "display": {
+                "label": "Inlet RH",
+                "color": "#0010A5",
+                "pattern": null,
+                "axis": 1
+              }
+            },
+            {
+              "value": "$bin_name$.outlet.RH",
+              "display": {
+                "label": "Outlet RH",
+                "color": "#0010A5",
+                "pattern": [
+                  2,
+                  2
+                ],
+                "axis": 1
+              }
+            }
+          ]
+        }
+      ],
+      "options": {
+        "total_height": 650
+      }
+    },
+    "WB Graph": {
+      "name_match": "^Bin ",
+      "queries": [
+        {
+          "time": {
+            "begin_datetime": "$begin_datetime$",
+            "end_datetime": "$end_datetime$",
+            "sample_period": 5,
+            "time_display": "hours"
+          },
+          "labels": {
+            "y0label": "&deg;F",
+            "y1label": "y 1 label"
+          },
+          "data": [
+            {
+              "value": "$bin_name$.Top.Temp",
+              "display": {
+                "label": "Top Temp",
+                "color": "#FF0000",
+                "pattern": null,
+                "axis": 0
+              }
+            },
+            {
+              "value": "$bin_name$.Bottom.Temp",
+              "display": {
+                "label": "Bottom Temp",
+                "color": "#bf5f00",
+                "pattern": null,
+                "axis": 0
+              }
+            },
+            {
+              "value": "$bin_name$.outlet.Wet Bulb",
+              "display": {
+                "label": "Outlet WB",
+                "color": "#003d1d",
+                "gg": null,
+                "axis": 0
+              }
+            }
+          ]
+        }
+      ],
+      "options": {
+        "total_height": 650,
+        "heights": [
+          0.6,
+          0.4
+        ]
+      }
+    },
+    "MCP Graph": {
+      "name_match": "^Bin ",
+      "queries": [
+        {
+          "time": {
+            "begin_datetime": "$begin_datetime$",
+            "end_datetime": "$end_datetime$",
+            "sample_period": 15
+          },
+          "labels": {
+            "title": "$bin_name$",
+            "y0label": "%"
+          },
+          "initial_options": {
+            "y0range": [
+              0,
+              20
+            ]
+          },
+          "data": [
+            {
+              "value": "$bin_name$.Top.MCP A",
+              "display": {
+                "label": "MCP A",
+                "color": "#404000",
+                "pattern": null,
+                "axis": 0
+              }
+            },
+            {
+              "value": "$bin_name$.Top.MCP B",
+              "display": {
+                "label": "MCP B",
+                "color": "#0000FF",
+                "pattern": null,
+                "axis": 0
+              }
+            },
+            {
+              "value": "$bin_name$.Top.MCP C",
+              "display": {
+                "label": "MCP C",
+                "color": "#FF0000",
+                "pattern": null,
+                "axis": 0
+              }
+            }
+          ]
+        },
+        {
+          "time": {
+            "begin_datetime": "$begin_datetime$",
+            "end_datetime": "$end_datetime$",
+            "sample_period": 15
+          },
+          "labels": {
+            "y0label": "%/hr"
+          },
+          "initial_options": {
+            "y0range": [
+              0,
+              20
+            ]
+          },
+          "data": [
+            {
+              "value": "$bin_name$.Top.dMCP/dt A",
+              "display": {
+                "label": "dMCP/dt A",
+                "color": "#404000",
+                "pattern": null,
+                "axis": 0
+              }
+            },
+            {
+              "value": "$bin_name$.Top.dMCP/dt B",
+              "display": {
+                "label": "dMCP/dt B",
+                "color": "#0000FF",
+                "pattern": null,
+                "axis": 0
+              }
+            },
+            {
+              "value": "$bin_name$.Top.dMCP/dt C",
+              "display": {
+                "label": "dMCP/dt C",
+                "color": "#FF0000",
+                "pattern": null,
+                "axis": 0
+              }
+            }
+          ]
+        }
+      ],
+      "options": {
+        "total_height": 650,
+        "heights": [
+          0.6,
+          0.4
+        ]
+      }
+    },
+    "Test Graph2": {
+      "name_match": "^Bin ",
+      "queries": [
+        {
+          "time": {
+            "begin_datetime": "$begin_datetime$",
+            "end_datetime": "$end_datetime$",
+            "sample_period": 5
+          },
+          "labels": {
+            "title": "$bin_name$",
+            "y0label": "<span style=\"color: #FF0000\">&deg;F</span>",
+            "y1label": "<span style=\"color: #000000\">g/m^3</span>"
+          },
+          "data": [
+            {
+              "value": "$bin_name$.inlet.Temp",
+              "vname": "itemp",
+              "display": {
+                "label": "Inlet Temp",
+                "color": "#FF0000",
+                "pattern": null,
+                "axis": 0
+              }
+            },
+            {
+              "value": "$bin_name$.outlet.Temp",
+              "vname": "otemp",
+              "display": {
+                "label": "Outlet Temp",
+                "color": "#FF0000",
+                "pattern": [
+                  2,
+                  2
+                ],
+                "axis": 0
+              }
+            },
+            {
+              "value": "$bin_name$.inlet.abshum",
+              "vname": "iabshum",
+              "display": {
+                "label": "Inlet AbsH",
+                "color": "#000000",
+                "pattern": [
+                  7,
+                  2
+                ],
+                "axis": 1
+              }
+            },
+            {
+              "value": "$bin_name$.outlet.abshum",
+              "vname": "oabshum",
+              "display": {
+                "label": "Outlet AbsH",
+                "color": "#000000",
+                "pattern": [
+                  2,
+                  2
+                ],
+                "axis": 1
+              }
+            }
+          ],
+          "calc": [
+            {
+              "value": "oabshum-iabshum",
+              "display": {
+                "label": "dAbsH",
+                "color": "#000000",
+                "pattern": null,
+                "axis": 1
+              },
+              "options": {
+                "all_rows": true
+              }
+            }
+          ]
+        }
+      ],
+      "options": {
+        "total_height": 650
+      }
+    }
+  },
+  "sensor_view": {
+    "no_fill_no_arrows": true,
+    "no_fill_fade": true,
+    "display_averages": true
+  },
+  "other_views": [
+    {
+      "title": "Sensor View",
+      "type": "sensor_view",
+      "view": {
+        "block": [
+          {
+            "type": "diagram",
+            "yindexes": "all",
+            "header": {
+              "label": "Test header"
+            }
+          },
+          {
+            "type": "table",
+            "row_type": "bin",
+            "alignment": "full",
+            "columns": [
+              {
+                "column_label": "Bin",
+                "value": "$bin_number$"
+              },
+              {
+                "bin_section_id": 13,
+                "read_type_id": 10,
+                "column_label": "$bin_section_name$ $read_type_short_name$($read_type_units$)",
+                "value": "$valueF1$"
+              },
+              {
+                "bin_section_id": 13,
+                "read_type_id": 11,
+                "column_label": "$bin_section_name$ $read_type_short_name$($read_type_units$)",
+                "value": "$valueF1$"
+              },
+              {
+                "bin_section_id": 14,
+                "read_type_id": 10,
+                "column_label": "$bin_section_name$ $read_type_short_name$($read_type_units$)",
+                "value": "$valueF1$"
+              },
+              {
+                "bin_section_id": 14,
+                "read_type_id": 11,
+                "column_label": "$bin_section_name$ $read_type_short_name$($read_type_units$)",
+                "value": "$valueF1$"
+              },
+              {
+                "bin_section_id": 14,
+                "read_type_id": 7,
+                "column_label": "$bin_section_name$ GP($read_type_units$)",
+                "value": "$valueF2$"
+              },
+              {
+                "bin_section_id": 13,
+                "read_type_id": 131,
+                "column_label": "$bin_section_name$ WB($read_type_units$)",
+                "value": "$valueF1$"
+              },
+              {
+                "bin_section_id": 14,
+                "read_type_id": 131,
+                "column_label": "$bin_section_name$ WB($read_type_units$)",
+                "value": "$valueF1$"
+              }
+            ],
+            "bin_ids": [
+              12,
+              13,
+              14,
+              15,
+              16,
+              21,
+              22,
+              23,
+              24,
+              25
+            ],
+            "header": {
+              "label": "Bin Details",
+              "class": "bin_icon_blue"
+            }
+          },
+          {
+            "type": "config"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Fill View",
+      "type": "fill_view",
+      "view": {
+        "fill_view_list": [
+          {
+            "view": "fill_view",
+            "bin_ids": [
+              12,
+              13,
+              14,
+              15,
+              16
+            ],
+            "options": {
+              "table_class": "pleasent_view",
+              "hide_labels": false,
+              "column_class": [
+                {
+                  "func": "fillStatusStyle",
+                  "keys": [
+                    "fill.fill_type_id",
+                    "fill.filled_datetime",
+                    "fill.emptied_datetime",
+                    "fill.air_begin_datetime",
+                    "fill.air_end_datetime",
+                    "fill.roll_datetime"
+                  ]
+                }
+              ],
+              "hover": {
+                "row_disable": false,
+                "thead_enable": true
+              }
+            }
+          },
+          {
+            "view": "fill_view_cell1",
+            "options": {
+              "table_class": "original_fill_view"
+            }
+          },
+          {
+            "view": "fill_view_cell2",
+            "options": {
+              "table_class": "original_fill_view"
+            }
+          },
+          {
+            "view": "fill_view",
+            "bin_ids": [
+              21,
+              22,
+              23,
+              24,
+              25
+            ],
+            "options": {
+              "table_class": "pleasent_view",
+              "hide_labels": false,
+              "column_class": [
+                {
+                  "func": "fillStatusStyle",
+                  "keys": [
+                    "fill.fill_type_id",
+                    "fill.filled_datetime",
+                    "fill.emptied_datetime",
+                    "fill.air_begin_datetime",
+                    "fill.air_end_datetime",
+                    "fill.roll_datetime"
+                  ]
+                }
+              ],
+              "hover": {
+                "row_disable": false,
+                "thead_enable": true
+              }
+            }
+          },
+          {
+            "view": "raw1",
+            "html": "<table class=\"fill_view_legend\"><tr><td class=\"bolded\" colspan=\"2\">Legend</td></tr><tr><td>Up Air</td><td class=\"fv_upair\">Value</td></tr><tr><td>Down Air</td><td class=\"fv_downair\">Value</td></tr><tr><td>Burners</td><td>PV (SP)</td></tr><tr><td>Full/Drying</td><td class=\"fv_full\"></td></tr><tr><td>Empty</td><td class=\"fv_empty\"></td></tr><tr><td>Shelling</td><td class=\"fv_shelling\"></td></tr><tr><td>Filling</td><td class=\"fv_filling\"></td></tr><tr><td>Bypass</td><td class=\"fv_bypass\"></td></tr></table>"
+          }
+        ],
+        "fill_view": [
+          {
+            "label": "Fill #",
+            "keys": [
+              "fill.fill_number"
+            ],
+            "format": null
+          },
+          {
+            "label": "Fill Date",
+            "keys": [
+              "fill.filled_datetime"
+            ],
+            "format": null
+          },
+          {
+            "label": "Field",
+            "keys": [
+              "fill.field_code"
+            ],
+            "format": null
+          },
+          {
+            "label": "Hybrid",
+            "keys": [
+              "fill.hybrid_code"
+            ],
+            "format": null
+          },
+          {
+            "label": "Lot #",
+            "keys": [
+              "fill.lot_number"
+            ],
+            "format": null
+          },
+          {
+            "label": "Load MC (%)",
+            "keys": [
+              "fill.pre_mc"
+            ],
+            "format": "mean"
+          },
+          {
+            "label": "Depth",
+            "keys": [
+              "fill.depth"
+            ],
+            "format": null
+          },
+          {
+            "label": "Up Air (h)",
+            "keys": [
+              "fill.air_begin_datetime",
+              "fill.roll_datetime"
+            ],
+            "format": "timeUpCalc"
+          },
+          {
+            "label": "Dn Air (h)",
+            "keys": [
+              "fill.roll_datetime",
+              "fill.air_end_datetime"
+            ],
+            "format": "timeDiffNow"
+          },
+          {
+            "label": "Total Air (h)",
+            "keys": [
+              "fill.air_begin_datetime",
+              "fill.air_end_datetime"
+            ],
+            "format": "timeDiffNow"
+          },
+          {
+            "label": "Air Dir",
+            "keys": [
+              "readings.top_temp",
+              "readings.bottom_temp"
+            ],
+            "format": "airDirection"
+          },
+          {
+            "label": "Top Temp (&deg;F)",
+            "keys": [
+              "readings.top_temp"
+            ],
+            "format": "fixed1T",
+            "class": [
+              {
+                "func": "upDownAirStyle",
+                "keys": [
+                  "readings.top_temp",
+                  "readings.bottom_temp"
+                ]
+              }
+            ]
+          },
+          {
+            "label": "Bot Temp (&deg;F)",
+            "keys": [
+              "readings.bottom_temp"
+            ],
+            "format": "fixed1T",
+            "class": [
+              {
+                "func": "upDownAirStyle",
+                "keys": [
+                  "readings.top_temp",
+                  "readings.bottom_temp"
+                ]
+              }
+            ]
+          },
+          {
+            "label": "Last Samp (%)",
+            "keys": [
+              "fill.during_mc"
+            ],
+            "format": "lastSample"
+          }
+        ],
+        "fill_view_cell1": [
+          {
+            "label": "Ambient&nbsp;Conditions",
+            "bin_id": 9,
+            "colspan": 3,
+            "class": "bolded fill_view_cell_ambient"
+          }
+        ],
+        "fill_view_cell2": [
+          {
+            "label": "Temp",
+            "bin_id": 9,
+            "class": "fill_view_cell_ambient",
+            "keys": [
+              "readings.outdoor_temp"
+            ],
+            "format": "fixed1T"
+          },
+          {
+            "label": "RH",
+            "bin_id": 9,
+            "class": "fill_view_cell_ambient",
+            "keys": [
+              "readings.outdoor_rh"
+            ],
+            "format": "fixed1P"
+          },
+          {
+            "label": "BP",
+            "bin_id": 9,
+            "class": "fill_view_cell_ambient",
+            "keys": [
+              "readings.outdoor_pressure",
+              "txt:kPa"
+            ],
+            "format": "mean"
+          }
+        ],
+        "fill_view_cell3": [
+          {
+            "label": "Ambient&nbsp;Conditions",
+            "bin_id": 9,
+            "colspan": 3,
+            "class": "bolded fill_view_cell_ambient"
+          }
+        ],
+        "fill_view_cell4": [
+          {
+            "label": "Temp",
+            "bin_id": 9,
+            "class": "fill_view_cell_ambient",
+            "keys": [
+              "readings.outdoor_temp"
+            ],
+            "format": "fixed1T"
+          },
+          {
+            "label": "RH",
+            "bin_id": 9,
+            "class": "fill_view_cell_ambient",
+            "keys": [
+              "readings.outdoor_rh"
+            ],
+            "format": "fixed1P"
+          },
+          {
+            "label": "BP",
+            "bin_id": 9,
+            "class": "fill_view_cell_ambient",
+            "keys": [
+              "readings.outdoor_pressure",
+              "txt:kPa"
+            ],
+            "format": "mean"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Diagnostics",
+      "type": "diagnostics",
+      "view": {
+        "interval": 15000
+      }
+    }
+  ],
+  "latest_readings_sample_period": 5,
+  "alarms": {
+    "bottom_only": true,
+    "aironly": true
+  },
+  "gauge_warn": [
+    {
+      "red": 600000,
+      "yellow": 300000
+    },
+    {
+      "read_type_id": 200,
+      "yellow": 9007199254740992,
+      "red": 9007199254740992
+    },
+    {
+      "read_type_id": 201,
+      "yellow": 9007199254740992,
+      "red": 9007199254740992
+    },
+    {
+      "read_type_id": 202,
+      "yellow": 9007199254740992,
+      "red": 9007199254740992
+    },
+    {
+      "read_type_id": 203,
+      "yellow": 9007199254740992,
+      "red": 9007199254740992
+    },
+    {
+      "read_type_id": 204,
+      "yellow": 9007199254740992,
+      "red": 9007199254740992
+    },
+    {
+      "read_type_id": 205,
+      "yellow": 9007199254740992,
+      "red": 9007199254740992
+    }
+  ],
+  "pressure_map": [
+    {
+      "name_match": "^Bin 20$",
+      "top": {
+        "bin_id": 12,
+        "bin_section": 13
+      },
+      "bottom": {
+        "bin_id": 12,
+        "bin_section": 14
+      }
+    },
+    {
+      "name_match": "^Bin 21$",
+      "top": {
+        "bin_id": 13,
+        "bin_section": 13
+      },
+      "bottom": {
+        "bin_id": 13,
+        "bin_section": 14
+      }
+    },
+    {
+      "name_match": "^Bin 22$",
+      "top": {
+        "bin_id": 14,
+        "bin_section": 13
+      },
+      "bottom": {
+        "bin_id": 14,
+        "bin_section": 14
+      }
+    },
+    {
+      "name_match": "^Bin 23$",
+      "top": {
+        "bin_id": 15,
+        "bin_section": 13
+      },
+      "bottom": {
+        "bin_id": 15,
+        "bin_section": 14
+      }
+    },
+    {
+      "name_match": "^Bin 24$",
+      "top": {
+        "bin_id": 16,
+        "bin_section": 13
+      },
+      "bottom": {
+        "bin_id": 16,
+        "bin_section": 14
+      }
+    },
+    {
+      "name_match": "^Bin 25$",
+      "top": {
+        "bin_id": 17,
+        "bin_section": 13
+      },
+      "bottom": {
+        "bin_id": 17,
+        "bin_section": 14
+      }
+    },
+    {
+      "name_match": "^Bin 26$",
+      "top": {
+        "bin_id": 18,
+        "bin_section": 13
+      },
+      "bottom": {
+        "bin_id": 18,
+        "bin_section": 14
+      }
+    },
+    {
+      "name_match": "^Bin 27$",
+      "top": {
+        "bin_id": 19,
+        "bin_section": 13
+      },
+      "bottom": {
+        "bin_id": 19,
+        "bin_section": 14
+      }
+    },
+    {
+      "name_match": "^Bin 28$",
+      "top": {
+        "bin_id": 20,
+        "bin_section": 13
+      },
+      "bottom": {
+        "bin_id": 20,
+        "bin_section": 14
+      }
+    },
+    {
+      "name_match": "^Bin 29$",
+      "top": {
+        "bin_id": 27,
+        "bin_section": 13
+      },
+      "bottom": {
+        "bin_id": 27,
+        "bin_section": 14
+      }
+    },
+    {
+      "name_match": "^Bin 30$",
+      "top": {
+        "bin_id": 28,
+        "bin_section": 13
+      },
+      "bottom": {
+        "bin_id": 28,
+        "bin_section": 14
+      }
+    },
+    {
+      "name_match": "^Bin 31$",
+      "top": {
+        "bin_id": 29,
+        "bin_section": 13
+      },
+      "bottom": {
+        "bin_id": 29,
+        "bin_section": 14
+      }
+    },
+    {
+      "name_match": "^Bin 35$",
+      "top": {
+        "bin_id": 30,
+        "bin_section": 13
+      },
+      "bottom": {
+        "bin_id": 30,
+        "bin_section": 14
+      }
+    },
+    {
+      "name_match": "^Bin 36$",
+      "top": {
+        "bin_id": 31,
+        "bin_section": 13
+      },
+      "bottom": {
+        "bin_id": 31,
+        "bin_section": 14
+      }
+    },
+    {
+      "name_match": "^Bin 37$",
+      "top": {
+        "bin_id": 32,
+        "bin_section": 13
+      },
+      "bottom": {
+        "bin_id": 32,
+        "bin_section": 14
+      }
+    },
+    {
+      "name_match": "^Bin 38",
+      "top": {
+        "bin_id": 33,
+        "bin_section": 13
+      },
+      "bottom": {
+        "bin_id": 33,
+        "bin_section": 14
+      }
+    }
+  ],
+  "client_version": 4
+}

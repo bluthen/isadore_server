@@ -13,3 +13,122 @@ The server code for the Isadore Dryer Management System. Originally released wit
 7. cp settings.cfg.example /www/sitename/webapps/isadore/settings.cfg
 8. Edit settings.cfg with your auth info
 9. Setup WSGI server to use app.wsgi
+
+
+## Example to install on Ubuntu LTS
+
+### Update and Install prereqs
+
+```  
+apt update && \
+apt upgrade && \
+apt install -y postgresql postgresql-contrib postgresql-plpython-10 apache2 libapache2-mod-wsgi python-matplotlib nginx python-pip postgresql-server-dev-10 ntpdate ntp sendmail git npm ant && \
+pip2 install bottle==0.9.5 beaker==1.5.4 pytz http-parser==0.6.2 restkit==4.2.1 iso8601==0.1.10 psycopg2 twilio==3.3.10 croniter==0.3.12 && \
+pip2 install git+https://github.com/bluthen/hygrometry.git
+npm install -g coffeescript
+
+```
+
+### Setup database
+
+Check out code
+```
+git clone git@github.com:bluthen/isadore_server.git && \
+cd isadore_server && \
+export GIT_LOC=`pwd`
+```
+
+```
+su - postgres
+export DBNAME=the_db_name
+createuser $DBNAME
+createdb $DBNAME -O $DBNAME
+psql -c "ALTER USER $DBNAME password 'somerandompassword';
+```
+
+Now we need to create the tables and everything
+
+```
+cd $GIT_LOC/server/sql
+psql -U $DBNAME -f 0_json_methods_extra.sql
+psql -U postgres -d $DBNAME -f 2_run_as_postgres_2.sql
+psql -U $DBNAME -f 3_funcs.sql
+psql -U $DBNAME -f 5_schema_index.sql
+psql -U $DBNAME -f 6_schema_seed.sql
+psql -U $DBNAME -f seed_customers/seed_generic.sql
+psql -U $DBNAME -f seed_customers/init_readings.sql
+```
+
+### Deploy Server code
+```
+mkdir /www/$DBNAME
+cd $GIT_LOC/server
+ant deploy -Dsite=$DBNAME
+cd ../clients/www
+ant deploy -Dsite=$DBNAME
+touch /www/$DBNAME/logs/time.log
+touch /www/$DBNAME/logs/bottle.log
+chown www-data /www/$DBNAME/logs/time.log
+chown www-data /www/$DBNAME/logs/bottle.log
+chown -R russ:www-data /www/$DBNAME/webapps/isadore
+cp $GIT_LOC/server/settings.cfg.example /www/$DBNAME/webapps/isadore/settings.cfg
+```
+
+### Passwords Configuration
+
+Set db midpass
+```
+psql -U $DBNAME -c "update table general_config set mid_pass='someotherpassword';"
+```
+Modify /www/$DBNAME/webapps/isadore/settings.cfg
+Make sure `midpass`, `dbuser`, `dbpass`, `dbhost` are correct.
+
+If using twilio for alerts, make sure `account` and `token` are correct for your twilio account.
+
+
+### Setup Apache as WSGI server
+
+```
+sh /usr/share/doc/apache2/examples/setup-instance $DBNAME
+ln -s /etc/init.d/apache2 /etc/init.d/apache2-$DBNAME
+systemctrl enable apache2-$DBNAME
+mkdir /var/run/apache2-$DBNAME
+```
+
+Edit the file `/etc/apache2-$DBNAME/sites-enables/000-default.conf` It should contain:
+
+```
+<VirtualHost *:80>                                                                                          
+        ServerAdmin webmaster@localhost
+        DocumentRoot /www/$DBNAME/webapps/ROOT                                                
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+        <Directory /www/$DBNAME/webapps/ROOT>
+                Require all granted
+        </Directory>
+        WSGIDaemonProcess $DBNAME processes=2 threads=15 display-name=%{GROUP}
+        WSGIProcessGroup $DBNAME    
+        WSGIScriptAlias /isadore /www/$DBNAME/webapps/isadore/app.wsgi
+        <Directory /www/$DBNAME/webapps/isadore>
+                Require all granted
+        </Directory>
+</VirtualHost>
+```
+
+Startup apache:
+
+```
+/etc/init.d/apache2-$DBNAME start
+```
+
+You should then be able to log in with the default username and password, be sure to change it:
+```
+admin@example.com
+_example_password
+```
+
+
+### Settings -> General Config
+
+After logging in pasting the contents of `$GIT_LOC/server/src/general_config.example.json` into the Settings -> General Config, it may help get your Current Data views started. For further customization look into at the top comments in the file `$GIT_LOC/clients/www/src/coffee/handler/isadore_current_data_handler.coffee`
+
