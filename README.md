@@ -68,12 +68,26 @@ cd $GIT_LOC/server
 ant deploy -Dsite=$DBNAME
 cd ../clients/www
 ant deploy -Dsite=$DBNAME
+mkdir -p /www/$DBNAME/webapps/ROOT
+mkdir -p /www/$DBNAME/logs
 touch /www/$DBNAME/logs/time.log
 touch /www/$DBNAME/logs/bottle.log
 chown www-data /www/$DBNAME/logs/time.log
 chown www-data /www/$DBNAME/logs/bottle.log
 chown -R russ:www-data /www/$DBNAME/webapps/isadore
 cp $GIT_LOC/server/settings.cfg.example /www/$DBNAME/webapps/isadore/settings.cfg
+```
+
+Make a file `/www/$DBNAME/webapps/ROOT/index.html` and have below be the contents:
+
+```
+<html>
+<head>
+<meta HTTP-EQUIV="REFRESH" content="0; url=./isadore/s/login.html">
+</head>
+<body>
+</body>
+</html>
 ```
 
 ### Passwords Configuration
