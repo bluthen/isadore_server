@@ -27,7 +27,7 @@ from email.mime.text import MIMEText
 import logging
 import threading
 import string
-from twilio.rest import TwilioRestClient
+from twilio.rest import Client
 import iso8601
 import re
 
@@ -425,7 +425,7 @@ def txtSplit(msg, readableSplit=True):
 
 
 def sendTxt(toTxt, msg, readableSplit=True):
-	client = TwilioRestClient(Single().getTwilioAccount(), Single().getTwilioToken())
+	client = Client(Single().getTwilioAccount(), Single().getTwilioToken())
 	if str(toTxt)[0] != '+':
 		toTxt = '+' + toTxt
 	if len(toTxt) != 12:
@@ -435,7 +435,7 @@ def sendTxt(toTxt, msg, readableSplit=True):
 
 	messages = []
 	for txt in txts:
-		message = client.sms.messages.create(to=toTxt, from_="+15555555555", body=txt)
+		message = client.messages.create(to=toTxt, from_="+15555555555", body=txt)
 		messages.append(message)
 		if message.status == 'failed':
 			raise FailedTxtError(message)

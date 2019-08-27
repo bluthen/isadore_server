@@ -26,7 +26,7 @@ The server code for the Isadore Dryer Management System. Originally released wit
 apt update && \
 apt upgrade && \
 apt install -y postgresql postgresql-contrib postgresql-plpython-10 apache2 libapache2-mod-wsgi python-matplotlib nginx python-pip postgresql-server-dev-10 ntpdate ntp sendmail git npm ant && \
-pip2 install bottle==0.12.17 beaker==1.5.4 pytz http-parser==0.6.2 restkit==4.2.1 iso8601==0.1.10 psycopg2 twilio==3.3.10 croniter==0.3.12 && \
+pip2 install bottle==0.12.17 beaker==1.5.4 pytz http-parser==0.6.2 restkit==4.2.1 iso8601==0.1.10 psycopg2 twilio==6.29.4 croniter==0.3.12 && \
 pip2 install git+https://github.com/bluthen/hygrometry.git
 npm install -g coffeescript
 
