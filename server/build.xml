@@ -9,11 +9,6 @@
 		<copy todir="/www/${site}.exotericanalytics.com/webapps/isadore">
 			<fileset dir="./src" excludes="**/*.cfg" />
 		</copy>
-		<mkdir dir="/www/${site}.exotericanalytics.com/webapps/isadore/s/doc"/>
-		<copy todir="/www/${site}.exotericanalytics.com/webapps/isadore/s/doc">
-			<fileset dir="./doc" />
-		</copy>
-		<replace file="/www/${site}.exotericanalytics.com/webapps/isadore/s/doc/restapi/isadore.raml" token="@@@baseUri@@@" value="https://${site}.exotericanalytics.com/isadore"/>
 		<mkdir dir="/www/${site}.exotericanalytics.com/webapps/isadore/sessions"/>
 		<mkdir dir="/www/${site}.exotericanalytics.com/webapps/isadore/gen_data"/>
 	</target>
