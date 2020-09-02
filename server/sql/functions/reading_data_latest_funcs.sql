@@ -154,15 +154,13 @@ DECLARE
     _myrow RECORD;
     _myrow2 RECORD;
 BEGIN
-    FOR _myrow IN SELECT DISTINCT grp_bin_id FROM bin_grp WHERE member_bin_id = _bin_id LOOP
-    	SELECT min(rdl.datetime) as datetime, avg(rdl.value) as value INTO _myrow2 FROM reading_data_latest rdl, bin_grp bg WHERE rdl.datetime >= _datetime - interval '30min' AND rdl.bin_section_id = _bin_section_id AND rdl.bin_id = bg.member_bin_id AND bg.grp_bin_id = _myrow.grp_bin_id AND rdl.read_type_id = _read_type_id;
-        PERFORM update_reading_data_latest(_myrow2.datetime, _myrow.grp_bin_id, _bin_section_id, _read_type_id, _myrow2.value);
-    END LOOP;
+    SELECT DISTINCT grp_bin_id INTO _myrow FROM bin_grp WHERE member_bin_id = _bin_id; 
+  	SELECT min(rdl.datetime) as datetime, avg(rdl.value) as value INTO _myrow2 FROM reading_data_latest rdl, bin_grp bg WHERE rdl.datetime >= _datetime - interval '30min' AND rdl.bin_section_id = _bin_section_id AND rdl.bin_id = bg.member_bin_id AND bg.grp_bin_id = _myrow.grp_bin_id AND rdl.read_type_id = _read_type_id;
+    PERFORM update_reading_data_latest(_myrow2.datetime, _myrow.grp_bin_id, _bin_section_id, _read_type_id, _myrow2.value);
 
-	FOR _myrow IN SELECT DISTINCT grp_bin_section_id FROM bin_section_grp WHERE member_bin_section_id = _bin_section_id LOOP
-		SELECT min(rdl.datetime) AS datetime, avg(rdl.value) AS value INTO _myrow2 FROM reading_data_latest rdl, bin_section_grp WHERE rdl.datetime >= _datetime - interval '30min' AND rdl.bin_id = _bin_id and rdl.bin_section_id = bin_section_grp.member_bin_section_id AND rdl.read_type_id = _read_type_id;
-        PERFORM update_reading_data_latest(_myrow2.datetime, _bin_id, _myrow.grp_bin_section_id, _read_type_id, _myrow2.value);
-	END LOOP;
+	SELECT DISTINCT grp_bin_section_id INTO _myrow FROM bin_section_grp WHERE member_bin_section_id = _bin_section_id;
+	SELECT min(rdl.datetime) AS datetime, avg(rdl.value) AS value INTO _myrow2 FROM reading_data_latest rdl, bin_section_grp WHERE rdl.datetime >= _datetime - interval '30min' AND rdl.bin_id = _bin_id and rdl.bin_section_id IN (select member_bin_section_id FROM bin_section_grp where bin_section_grp.grp_bin_section_id = _myrow.grp_bin_section_id) AND rdl.read_type_id = _read_type_id;
+    PERFORM update_reading_data_latest(_myrow2.datetime, _bin_id, _myrow.grp_bin_section_id, _read_type_id, _myrow2.value);
 END
 $$;
 
