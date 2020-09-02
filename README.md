@@ -181,3 +181,11 @@ Then Run:
 systemctl enable $DBNAME_alarmwatcher
 systemctl start $DBNAME_alarmwatcher
 ```
+
+
+# Maintenance
+
+1. Every year you need to clone the devices so they can be used for the coming year. This is in Settings -> Clone Devices.
+
+Put in the previous year and the current year and click the clone devices but. This only needs to be done once per year. 
+
