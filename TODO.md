@@ -3,7 +3,7 @@
 This file is a document of things that are needed for both [isadore_server](https://github.com/bluthen/isadore_server) and [isadore_electronics](https://github.com/bluthen/isadore_electronics).
 
 General Overview:
-* Better troubleshooting/configuration from the isadore server web interface
+* Better troubleshooting/configuration from the isadore server web interface and less from MID command line that requires more technical knowledge.
 * Reliability improvements to the electronics (circuit protections and connector change)
 * Update software from python2 to python3 for better support on newer operating systems and databases, the longer it goes the harder it will be to run.
 
